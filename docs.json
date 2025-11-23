@@ -44,6 +44,14 @@
               "ai-tools/claude-code",
               "ai-tools/windsurf"
             ]
+          },
+          {
+            "group": "Projects",
+            "pages": [
+              "projects/kaktusprod/overview",
+              "projects/kaktusprod/local-development",
+              "projects/kaktusprod/platform-systems"
+            ]
           }
         ]
       },

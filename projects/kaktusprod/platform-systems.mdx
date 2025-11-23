@@ -1,0 +1,60 @@
+---
+title: "Key Platform Systems"
+description: "Dive into the subsystems that keep authentication, scheduling, sourcing, and automation working inside KaktusProd."
+---
+
+## Authentication & routing
+
+- **Helpers**: `src/lib/auth.ts` centralizes `getAuthenticatedUser`, `requireAuth`, and `getClientAuth`, ensuring both server and client components share the same logic (see [`AUTH_FLOW.md`](https://github.com/dfwteinos/KaktusProd/blob/main/AUTH_FLOW.md)).
+- **Middleware**: `src/middleware.ts` and `src/utils/supabase/middleware.ts` handle redirects so unauthenticated visitors land on `/` or `/login`, while authenticated users are pushed to `/sidebar`.
+- **Protected layouts**: `src/app/sidebar/layout.tsx` wraps the CRM UI and only renders after `requireAuth` succeeds. Legacy routes such as `/private` remain available but hidden.
+
+> Tip: when adding new App Router segments, reuse `requireAuth` in the page's async component or wrap the segment with the existing protected layout.
+
+## Calendar watch automation
+
+The Google Calendar integration ensures scheduled meetings stay in sync with internal records:
+
+1. **Frontend hook** (`src/app/private/page.tsx`) gathers a meeting link and triggers watch creation.
+2. **Utility layer** (`src/utils/googleCalendarWatch.ts`) issues `events.watch` calls, storing metadata (channel/resource IDs, expiry).
+3. **Edge Function** (`supabase/functions/google-webhook/index.ts`) receives Google push notifications, validates headers + shared secret, and queues updates.
+4. **Database**: `calendar_watches` and `conferences` tables store the active watches and meeting metadata. Schemas and policies live under `supabase/migrations/*`.
+5. **Processing**: `src/utils/webhookHandler.ts` refreshes OAuth tokens if needed, fetches the latest event payload, and updates `conferences`.
+
+Details, including curl commands and security notes, are in [`CALENDAR_WATCH_SYSTEM.md`](https://github.com/dfwteinos/KaktusProd/blob/main/CALENDAR_WATCH_SYSTEM.md).
+
+## CV parsing + enrichment
+
+- **Realtime bootstrap**: `src/instrumentation.ts` runs once per server start (enabled via `next.config.ts`’s `instrumentationHook`). It imports `src/lib/realtime-init.ts`, which keeps a singleton Supabase Realtime subscription alive.
+- **Trigger**: Whenever the `candidates` table receives a new `pdf_storage_url`, the subscription fires `parseAndSaveCandidateCV`, populating `cv_json` and derived fields.
+- **AI providers**: Keys for Mistral and OpenAI live in `.env.local`. Failures are logged with context so you can retry parsing manually.
+- **Health check**: `src/app/api/realtime/init/route.ts` exposes a GET endpoint for manual initialization or uptime monitors.
+
+For a step-by-step walkthrough see [`CV_PARSING_INTEGRATION.md`](https://github.com/dfwteinos/KaktusProd/blob/main/CV_PARSING_INTEGRATION.md) and `ENRICHMENT_FEATURES_SUMMARY.md`.
+
+## Fastify API & webhooks
+
+- **Server**: `src/server.ts` boots a Fastify instance with CORS/Helmet/Rate Limit and a `/docs` OpenAPI explorer.
+- **Security**: All `/v1/*` routes require bearer auth (service-role or user JWT). API keys prefixed with `ak_` can be created/rotated via dedicated endpoints.
+- **Webhooks**: Consumers register via `/v1/webhooks` (service-role only). Deliveries include `X-Webhook-Signature` (HMAC SHA-256) so receivers can verify authenticity. Example code lives in [`README-API.md`](https://github.com/dfwteinos/KaktusProd/blob/main/README-API.md).
+- **Cron/monitoring**: Supporting scripts in `scripts/*.mjs` run outreach jobs (e.g., invite checks) and can be scheduled separately.
+
+Use the API whenever partner systems need deterministic data access without touching Supabase directly.
+
+## Chrome LinkedIn extension
+
+- **Purpose**: Lets sourcers add LinkedIn profiles straight into Kaktus projects/roles without leaving the profile page.
+- **Runtime files**: `content.js` injects the sidebar, `background.js` manages lifecycle + authentication, `popup.js/html` powers the toolbar entry point, and `styles.css` controls the UI.
+- **Configuration**: Update `config.js` with `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `KAKTUS_URL`. Debug mode and auto sidebar toggles are also set here.
+- **Build**: `npm run ext:build` compiles assets into `dist/`; `npm run ext:zip` packages them for review or distribution.
+- **Docs**: The extension maintains its own troubleshooting/installation guides (e.g., `INSTALLATION.md`, `DEBUG_INSTRUCTIONS.md`, `PROFILE_EXTRACTION_FIXES.md`) inside `chrome_linkedin_extension/`.
+
+## Supabase data model & security
+
+- **Migrations**: All schema changes are SQL-first (`supabase/migrations/*.sql`). Each commit usually ships with a matching report under `supabase/*-schema-report-*.md`.
+- **Row-Level Security**: Candidate access control is documented in `CANDIDATE_ACCESS_CONTROL_DESIGN.md` and `CANDIDATE_RLS_IMPLEMENTATION_REPORT.md`. Policies lock rows to their owning workspace/teamspace while still enabling global demo data.
+- **Edge Functions**: Beyond calendar hooks, you’ll find `microsoft-webhook`, `skribby-webhook`, and `monitor-bot-status` Deno functions. These run close to the DB and authenticate via Supabase JWT + shared secrets.
+- **Snapshots**: JSON exports in `supabase/snapshots/{dev,main}/YYYY-MM-DD` make it easy to diff tables, indexes, and policies between environments.
+
+Whenever you add a new table or policy, update the relevant markdown reference so other contributors understand the intent behind the SQL.
+

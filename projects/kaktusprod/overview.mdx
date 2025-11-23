@@ -1,0 +1,56 @@
+---
+title: "Kaktus Prod Overview"
+description: "Understand the product vision, architecture, and key components that live inside KaktusProd."
+---
+
+Kaktus is a recruiting CRM that blends a Next.js 15 application, Supabase backend, and a set of automation services (webhooks, CV parsing, and a Chrome extension) into one deployable platform. This page highlights the moving parts so you can navigate the mono-repo with confidence.
+
+## Architecture at a glance
+
+- **Web app** – The `src/` directory hosts the React + Tailwind UI, server actions, and API routes that power the recruiter dashboard, onboarding flows, and candidate workspaces.
+- **Data + auth** – Supabase provides PostgreSQL, Row-Level Security, storage, and Edge Functions. All SQL migrations, seeds, and schema snapshots live in `supabase/`.
+- **Operational API** – A Fastify service (`src/server.ts`, documented in [`README-API.md`](https://github.com/dfwteinos/KaktusProd/blob/main/README-API.md)) exposes `/v1/*` endpoints, OpenAPI docs, API keys, and webhook delivery.
+- **Realtime automation** – Instrumentation code inside `src/lib/realtime-init.ts` and `src/instrumentation.ts` keeps Supabase Realtime subscriptions (e.g., CV parsing) alive whenever the Next.js server boots.
+- **Chrome sourcing extension** – `chrome_linkedin_extension/` contains the LinkedIn sidebar experience plus a build/zip pipeline under `scripts/`.
+- **Edge functions & cron** – `supabase/functions/*` covers Google/Microsoft calendar webhooks, Skribby enrichment, and monitoring utilities that run close to the data.
+
+## Codebase layout
+
+| Path | What lives there |
+| --- | --- |
+| `src/app` | App Router pages, layouts, and route handlers (e.g., `/sidebar`, `/api/*`). |
+| `src/components` | Reusable UI primitives built with shadcn/Heroui and Radix. |
+| `src/lib` | Business logic helpers such as auth utilities, CV parsing, invite flows, and Supabase clients. |
+| `scripts/` | Node utilities for packaging the Chrome extension and scheduled maintenance. |
+| `supabase/migrations` | SQL migrations plus schema snapshots for dev/main environments. |
+| `supabase/functions` | Deno Edge Functions like `google-webhook`, `microsoft-webhook`, and monitoring bots. |
+| `chrome_linkedin_extension/` | Stand-alone extension code with its own README, build artifacts, and troubleshooting guides. |
+| `tests/` | Vitest suites (currently focused on the public API) to guard core flows. |
+
+## Core capabilities
+
+1. **Recruiter workspace** – Authenticated users land in `/sidebar`, a CRM dashboard guarded by the helpers described in [`AUTH_FLOW.md`](https://github.com/dfwteinos/KaktusProd/blob/main/AUTH_FLOW.md).
+2. **Calendar intelligence** – [`CALENDAR_WATCH_SYSTEM.md`](https://github.com/dfwteinos/KaktusProd/blob/main/CALENDAR_WATCH_SYSTEM.md) documents how Google (and Microsoft) webhooks keep the `conferences` table synced whenever candidates reschedule meetings.
+3. **Automatic CV parsing** – [`CV_PARSING_INTEGRATION.md`](https://github.com/dfwteinos/KaktusProd/blob/main/CV_PARSING_INTEGRATION.md) explains the Supabase Realtime listener that fills `cv_json` without running an extra process.
+4. **Chrome sourcing** – Recruiters can add LinkedIn candidates directly into projects via the extension documented [here](https://github.com/dfwteinos/KaktusProd/tree/main/chrome_linkedin_extension).
+5. **Data sharing surface** – The Fastify API (`npm run api:*`) exposes REST resources, API keys, and webhook delivery so partner apps can push/pull candidate data securely.
+
+## Operational considerations
+
+- **Environments** – `.env.local` powers Next.js; `.env` powers the Fastify API; Supabase Edge Functions use `supabase secrets`. Copy values from the production project and never ship `SUPABASE_SERVICE_ROLE_KEY` to browsers.
+- **Deployment targets** – The web app currently ships to Netlify. Domains live under NameCheap, while transactional email is delivered via Resend (`npm run email` starts a local preview server).
+- **Monitoring** – Edge Functions log to Supabase. Fastify emits structured logs via `pino`, and client analytics route through PostHog (`posthog-js` / `posthog-node` dependencies).
+- **Security** – The repo contains detailed RLS write-ups (`supabase/CANDIDATE_*` docs). Webhook endpoints enforce both Supabase JWT auth and shared secrets, as described near the bottom of the Google Calendar doc.
+
+## Additional references
+
+| Topic | Reference |
+| --- | --- |
+| Supabase schema + reports | `supabase/dev-schema-report-*.md`, `snapshots/*` |
+| Invitation system | `INVITATION_SYSTEM_IMPLEMENTATION.md`, `INVITATION_RLS_SECURE_SOLUTION.md` |
+| Teamspaces & jobs | `JOB_POSITIONS_*` and `JOB_POSITIONS_RLS_UPDATE.md` |
+| Content/Notion sync | `CONTENT_SHELL_INTEGRATION.md`, `NOTION_SIDEBAR_README.md` |
+| MCP + automation | `MCP-SETUP.md`, `cursor-talk-to-figma-mcp-main/` |
+
+Use this page as the launchpad before diving into the deeper guides linked below.
+
