@@ -1,43 +1,27 @@
-# Mintlify Starter Kit
+# Lope Product Guide
 
-Use the starter kit to get your docs deployed and ready to customize.
+This repository powers the public documentation for **Lope**, the recruiter-first platform formerly known as Kaktus. Every page in `projects/lope` is written for recruiters, sourcers, and client partners who use the product—not for engineers.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## Editing the docs locally
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
-
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
-```
-
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
-mint dev
-```
-
-View your local preview at `http://localhost:3000`.
+1. Install the [Mintlify CLI](https://www.npmjs.com/package/mint):  
+   `npm i -g mint`
+2. From the repo root (where `docs.json` lives), run:  
+   `mint dev`
+3. Visit `http://localhost:3000` to preview your changes live. The preview reloads automatically whenever you save a file.
 
 ## Publishing changes
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+Push commits to the default branch. Our connected Mintlify project picks up changes automatically and redeploys the hosted docs with the latest Lope branding.
+
+## Writing guidelines
+
+- Keep the audience in mind: recruiters, hiring managers, and collaborators.
+- Use the style rules in `.cursor/rules.md` (plain language, outcomes first, minimal jargon).
+- Reference real UI labels and flows inside Lope so readers can follow along without digging into code.
 
 ## Need help?
 
-### Troubleshooting
-
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
-
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+- Run `mint update` if the CLI misbehaves.
+- Check `docs.json` if a page 404s locally.
+- Contact the Lope product team in Slack if you need access to brand assets (also stored under `Lope_zip/` in this repo).
