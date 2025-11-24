@@ -3,47 +3,45 @@ title: "Automation & Integrations"
 description: "Understand the background systems that keep Lope updated without manual effort."
 ---
 
-Lope quietly coordinates calendars, enrichment, inboxes, and access control so your team always works with fresh information. Here is a plain-language tour of the most important systems and what they do for you.
+Lope quietly coordinates interviews, enrichment, candidates, and access control so your team always works with fresh information. Here is a plain-language tour of the most important systems and what they do for you.
 
-## AI Notetaker
+## Lope + ATS: how they work together
 
-Lope joins your interviews to capture every detail so you can focus on the candidate.
+Lope plugs into your ATS to keep data in sync automatically - no extra manual updates required.
 
-- **Universal support.** Works on Google Meet and Microsoft Teams.
-- **Smart summaries.** Turns transcripts into structured scorecards with key takeaways.
-- **Instant recall.** Saves the summary directly to the candidate's timeline for easy review.
+- **ATS Export.** Export candidates from your ATS (e.g., Bullhorn, Greenhouse, Lever) as CSV and import them into Lope.
+- **One-Way Integration.** For some ATSs, Lope can connect one-way to receive candidate data automatically.
+- **Lope runs in the background.** Keep running your jobs and compliance in your ATS; use Lope to enrich, search, run interviews, and present structured shortlists to clients.
+- **Updates.** When a candidate is hired, you can update your ATS as usual; Lope will automatically update it as well.
 
-## Calendar intelligence
+## Candidate sheet: your single source of truth
 
-- **Automatic watches.** When you log a meeting link, Lope creates a watch with Google or Microsoft so the record updates instantly if the event shifts.
-- **Conflict alerts.** Lope flags missing or expired links directly on the meeting card.
-- **Shared visibility.** Hiring managers see only the meetings relevant to their projects, with up-to-date links and time zones.
+For every candidate, Lope keeps one central profile:
 
-<Warning>
-If a candidate or manager edits an event title instead of the time, Lope may not detect the change. Ask partners to modify the time directly to stay synced.
-</Warning>
+- **Core info.** Name, contact details, location, current role, links (LinkedIn, GitHub).
+- **CV & Enrichment.** Parsed CV fields plus data pulled from LinkedIn/GitHub.
+- **Interviews.** Candidate transcripts and AI summaries from the Notetaker.
+- **Fit Signals. **Instant job fit signals in every candidate sheet.
+- **Smart report.** Short AI-generated summary of fit against a specific role, which you can tweak before sharing.
 
-## Candidate intelligence
+## Data import & enrichment flows
 
-- **CV parsing.** Drag in a PDF and Lope extracts experience, skills, education, and contact details within seconds.
-- **Enrichment.** Lope cross-checks new entries against existing records so you avoid duplicates and keep a clean talent pool.
-- **Smart filters.** Structured profiles allow you to save searches (e.g., “back-end + fintech + Berlin”) that stay updated as you add more talent.
+- **CSV imports.** Upload candidate lists exported from your ATS or spreadsheets.
+- **Bulk CV upload.** Drop a .zip of CVs; Lope creates candidate rows automatically.
+- **Bulk enrichment.** Select a group of candidates and run LinkedIn/GitHub enrichment in bulk; track how many profiles were successfully enriched.
 
-## Sourcing & communication
+## Sourcing
 
 - **Chrome extension.** Add LinkedIn profiles, notes, and tags without leaving the page. The extension respects your Lope login so you never re-authenticate mid-flow.
-- **Email nudges.** Lope drafts reminders and thank-you notes with the right meeting details; you just personalize and send.
-- **Client invites.** Share real-time dashboards with read-only or comment-level access so updates stop clogging your inbox.
 
 <Note>
-Need a branded recap? Use the **Share Update** button inside any project—Lope pulls metrics and top highlights into a clean email or PDF.
+  No need to connect your **LinkedIn** account - risk free!
 </Note>
 
 ## Trust & security
 
-- **Role-based access.** Every invite is scoped by workspace, project, and even pipeline stage, so contractors and clients only see what you approve.
-- **Audit trail.** Key actions—stage changes, notes, meeting edits—are logged with timestamps and the teammate responsible.
-- **Data residency.** Lope runs on Supabase with strict row-level security, meaning each workspace owns its data, even when multiple agencies collaborate.
+- **Role-based access.** Every invite is scoped by workspace, teamspaces, and roles so each teammate only gets access to what they’re meant to own.
+- **Data residency.** Lope runs on Supabase with strict row-level security, meaning each workspace owns its data.
+- **Audit.** Key actions (like stage changes and generated reports) are logged internally so we can help you troubleshoot and improve over time.
 
-Together, these systems free you from constant babysitting. Pair this knowledge with the Daily Work guide to make the most of every automation Lope offers.
-
+Together, these systems free you from constant admin work. Pair this knowledge with the Daily Work guide to make the most of every automation Lope offers.
