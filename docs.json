@@ -51,13 +51,13 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hello@lope.ai"
+        "href": "mailto:support@withlope.com"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Book a demo",
-      "href": "https://lope.ai"
+      "href": "https://www.withlope.com/waitlist"
     }
   },
   "contextual": {
