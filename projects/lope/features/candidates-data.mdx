@@ -1,0 +1,52 @@
+---
+title: "Candidates & Data"
+description: "How to import, export, filter, and enrich your candidate data in Lope."
+---
+
+## Overview
+
+The **Candidates** page is your central database. It holds every profile you’ve sourced, imported, or interviewed. Use this view to manage your talent pool, run bulk actions, and keep data clean.
+
+## UI Reference
+
+| Element | Location | Action |
+| :--- | :--- | :--- |
+| **Import Candidates** | Top-right | Opens the import modal to upload CSVs or connect your ATS. |
+| **Export CSV** | Top toolbar (after selection) | Downloads selected rows as a structured CSV file. |
+| **Enrich** | Top toolbar (after selection) | Runs a live lookup on LinkedIn/GitHub to update profile details. |
+| **AI Scout** | Top-left toggle | Switches the view to "AI Search" mode for semantic queries. |
+| **Columns** | Table header | Click to sort, filter, or hide specific data points (e.g., "Skills", "Stage"). |
+| **Row Actions (...)** | Right side of row | Options to delete, edit, or open the candidate sheet. |
+
+## How-to Guides
+
+### How to import candidates from CSV
+1. Go to the **Candidates** page.
+2. Click the **Import** button in the top-right corner.
+3. Select **CSV Upload**.
+4. Drag and drop your file or click to browse.
+5. Map your CSV columns to Lope fields (e.g., "First Name" → "Name").
+6. Click **Start Import**. You’ll see a progress bar, and candidates will appear as they process.
+
+### How to enrich candidates
+1. Select one or more candidates using the checkboxes on the left.
+2. Click the **Enrich** button in the toolbar that appears.
+3. Choose **LinkedIn** or **GitHub** (or both).
+4. Lope will run a background job. When finished, you’ll see a "✨ Enriched" toast notification and updated fields.
+
+### How to export data
+1. Filter your view or manually select the candidates you need.
+2. Click **Export** in the multi-selection toolbar.
+3. Choose **CSV Export**.
+4. A download will start immediately with your current column configuration.
+
+## FAQ
+
+**Q: How do I export my entire database?**
+A: Go to Candidates, select the "Select All" checkbox in the header, and click **Export → CSV**.
+
+**Q: Why is the Enrich button disabled?**
+A: You must select at least one candidate row first. Also, ensure you have enough credits if your plan has limits.
+
+**Q: Can I undelete a candidate?**
+A: Yes. Immediately after deleting, an "Undo" option appears. If you missed it, contact support to restore soft-deleted records.
