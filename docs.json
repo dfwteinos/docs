@@ -24,10 +24,7 @@
             "group": "Daily work",
             "pages": [
               "projects/lope/local-development",
-              "projects/lope/platform-systems",
-              "projects/lope/features/candidates-data",
-              "projects/lope/features/ai-features",
-              "projects/lope/features/teamspaces"
+              "projects/lope/platform-systems"
             ]
           },
           {
@@ -35,7 +32,8 @@
             "pages": [
               "projects/lope/features/candidates-data",
               "projects/lope/features/ai-features",
-              "projects/lope/features/teamspaces"
+              "projects/lope/features/teamspaces",
+              "projects/lope/features/collaboration-reports"
             ]
           }
         ]
