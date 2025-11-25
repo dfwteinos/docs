@@ -1,42 +1,32 @@
 ---
-title: "Collaboration & Reports"
-description: "How to invite teammates, manage teamspaces, and share reports with clients."
+title: "Collaboration"
+description: "How to invite teammates and manage teamspaces"
 ---
-
-## Collaboration
 
 ### Overview
 
-Lope is built for teams. You can invite recruiters, hiring managers, and clients to collaborate in **Workspaces** and **Teamspaces**.
+Lope is built for teams. You can invite recruiters & managers to collaborate in **Workspaces** and **Teamspaces**.
 
 **Prerequisites:**
-- You must be a Workspace Admin to invite members or change roles.
+
+- You must be a **Workspace Admin** to invite members or change roles.
 
 ### UI Reference
 
-| Element | Location | What it does |
-| :--- | :--- | :--- |
-| **Invite Member** | Teamspace Settings / Workspace Settings | Opens a modal to send email invitations. |
-| **Role Selector** | Invite modal | Choose between *Admin*, *Member*, or *Guest*. |
-| **Teamspaces** | Sidebar | Folders that organize projects and control access permissions. |
+| Element           | Location           | What it does                                                   |
+| :---------------- | :----------------- | :------------------------------------------------------------- |
+| **Invite Member** | Teamspace top-left | Opens a modal to send email invitations.                       |
+| **Teamspaces**    | Sidebar            | Folders that organize projects and control access permissions. |
 
 ### How-to / Processes
 
 #### How to invite a teammate to a Teamspace
 
 1. Open the sidebar and hover over the **Teamspace** name.
-2. Click the **Settings** (gear icon) or **Invite** (plus icon) button.
+2. Click the **Invite** **members** button.
 3. Enter the teammate's email address.
-4. Select their role (e.g., Member).
 5. Click **Send Invite**.
 6. They will receive an email link to join.
-
-#### How to remove a member
-
-1. Go to **Workspace Settings** -> **Members**.
-2. Find the person you want to remove.
-3. Click the **... (More)** menu on their row.
-4. Select **Remove from Workspace**.
 
 ### FAQ
 
@@ -44,48 +34,6 @@ Lope is built for teams. You can invite recruiters, hiring managers, and clients
   <Accordion title="What is the difference between a Workspace and a Teamspace?">
     A **Workspace** is your company's main account (billing, all data). A **Teamspace** is a sub-folder (e.g., "Engineering Hiring", "Marketing Roles") to organize projects and limit access.
   </Accordion>
-
-  <Accordion title="Can I invite a client with read-only access?">
-    Yes. Invite them as a **Guest** to a specific Teamspace or Project. They will see candidates but cannot delete data or change settings.
-  </Accordion>
 </AccordionGroup>
 
 ---
-
-## Reports
-
-### Overview
-
-Reports allow you to share candidate progress with clients or hiring managers without giving them full login access to Lope. You can generate branded PDFs or share live links.
-
-### UI Reference
-
-| Element | Location | What it does |
-| :--- | :--- | :--- |
-| **Create Report** | Candidate Sheet / Project Actions | Starts the report builder flow. |
-| **Share Link** | Report View | Generates a public, read-only link to the report. |
-| **Export PDF** | Report View | Downloads the report as a PDF file. |
-
-### How-to / Processes
-
-#### How to create and share a candidate report
-
-1. Open a **Project**.
-2. Select the candidates you want to include.
-3. Click **Create Report** (or "Share Selection").
-4. Customize the columns (hide salary, show notes, etc.).
-5. Click **Generate Link**.
-6. Copy the link and send it to your client.
-
-### FAQ
-
-<AccordionGroup>
-  <Accordion title="Do clients need a login to view reports?">
-    No. Shared report links are public (but obscure) URLs. Anyone with the link can view the read-only data you selected.
-  </Accordion>
-
-  <Accordion title="Does the report update automatically?">
-    Live links update automatically when you change candidate stages or notes in Lope. PDF exports are static snapshots.
-  </Accordion>
-</AccordionGroup>
-
