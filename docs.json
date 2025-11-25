@@ -16,15 +16,15 @@
           {
             "group": "Getting started",
             "pages": [
-              "index",
-              "projects/lope/overview"
+              "projects/lope/getting-started/welcome",
+              "projects/lope/getting-started/lope-overview"
             ]
           },
           {
             "group": "Daily work",
             "pages": [
-              "projects/lope/local-development",
-              "projects/lope/platform-systems"
+              "projects/lope/daily-work/automation-integrations",
+              "projects/lope/daily-work/lope-pipeline"
             ]
           },
           {
