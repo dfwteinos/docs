@@ -1,23 +1,23 @@
 ---
 title: "AI Features"
-description: "Using the AI Notetaker, AI Search, and Smart Reports to speed up hiring."
+description: "Using the AI Notetaker, AI Scout and Smart Reports to speed up your processes."
 ---
 
 ## AI Notetaker
 
-Lope’s Notetaker joins your calls, records the audio, and writes a structured summary.
+Lope’s Notetaker automatically joins your calls, records the audio, and writes a structured summary.
 
 ### UI Reference
 
-| Element         | Location                     | Action                                                         |
-| :-------------- | :--------------------------- | :------------------------------------------------------------- |
-| **Meeting Bot** | Candidate Sheet → Interviews | Shows status of the bot (Joined, Processing, Completed).       |
-| **Transcript**  | Candidate Sheet → Interviews | Full text of the conversation with speaker labels.             |
-| **Summary**     | Candidate Sheet → Interviews | AI-generated scorecard (Strengths, Weaknesses, Key Takeaways). |
+| Element         | Location                    | Action                                                             |
+| :-------------- | :-------------------------- | :----------------------------------------------------------------- |
+| **Meeting Bot** | Home Page                   | Shows status of the bot (Prep Pending, Prep Completed, Bot Ready). |
+| **Transcript**  | Candidate Sheet → Interview | Full text of the conversation with speaker labels.                 |
+| **Summary**     | Candidate Sheet → Interview | AI-generated interview summary                                     |
 
 ### How to use the Notetaker
 
-1. Schedule a Google Meet or Teams call as usual.
+1. Schedule a Google Meet or Teams call from your calendar.
 2. Ensure the candidate's email in the invite matches their Lope record.
 3. Lope detects the event and sends the bot to join at the start time.
 4. After the call ends, check the **Candidate Sheet**. The transcript and summary will appear automatically within minutes.
@@ -29,26 +29,29 @@ Instead of keyword matching ("Java" AND "Berlin"), AI Scout understands intent (
 ### How to run an AI Search
 
 1. Go to the **Candidates** page.
-2. Click the **AI Scout** toggle in the top-left.
+2. Click the **AI Scout** toggle in the top-left above the candidate table.
 3. Type your query (e.g., "Marketing managers with SaaS experience in London").
-4. Lope ranks candidates by relevance score (0–100%) and highlights _why_ they match.
+4. Lope ranks candidates by relevance score (0–10) and highlights _why_ they match in their candidate sheet.
 
 ## Smart Reports
 
-Generate a client-facing PDF or link that summarizes why a candidate is a good fit.
+Generate a client-facing PDF or text that summarizes why a candidate is a good fit.
 
 ### How to generate a report
 
 1. Open a **Candidate Sheet**.
-2. Click the **Reports** tab.
-3. Select **Generate Report**.
-4. Choose the job context (e.g., "Fit for Senior Designer role").
-5. Lope writes a narrative summary. You can edit it before downloading as PDF or sharing a link.
+2. Click the **Generate** **Report** tab in the top-right corner.
+3. Alternatively, you can select one or more candidates in the table and click **Generate Report** in the toolbar above.
+4. The report will be generated based on the job you've assigned to each candidate.
+5. Lope writes a narrative summary. You can edit it before downloading as PDF or copying the text.
 
 ## FAQ
 
-**Q: Does the Notetaker record video?** A: No, only audio and transcript.
+**Q: Does the Notetaker record video?** \
+**A:** No, only audio and transcript.
 
-**Q: Can I edit the AI summary?** A: Yes. Click the **Edit** icon on any report or summary to refine the text before sharing.
+**Q: Can I edit the AI summary?** \
+**A:** Yes. Click the **Edit** icon on any report or summary to refine the text before sharing.
 
-**Q: Why didn't the bot join my call?** A: Check that the meeting link was valid and that the bot was admitted from the lobby. Also, ensure the calendar event was synced to Lope.
+**Q: Why didn't the bot join my call?** \
+**A: **Check that the meeting link was valid and that the bot was admitted from the lobby. Also, ensure your calendar is synced to Lope (check **Account Health** in the top-right).
