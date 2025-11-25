@@ -29,6 +29,14 @@
               "projects/lope/features/ai-features",
               "projects/lope/features/teamspaces"
             ]
+          },
+          {
+            "group": "Functionalities",
+            "pages": [
+              "projects/lope/features/candidates-data",
+              "projects/lope/features/ai-features",
+              "projects/lope/features/teamspaces"
+            ]
           }
         ]
       }
