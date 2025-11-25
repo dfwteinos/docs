@@ -30,10 +30,10 @@
           {
             "group": "Functionalities",
             "pages": [
-              "projects/lope/features/candidates-data",
-              "projects/lope/features/ai-features",
-              "projects/lope/features/teamspaces",
-              "projects/lope/features/collaboration-reports"
+              "projects/lope/functionalities/candidates-data",
+              "projects/lope/functionalities/ai-features",
+              "projects/lope/functionalities/teamspaces",
+              "projects/lope/functionalities/collaboration-reports"
             ]
           }
         ]
