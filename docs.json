@@ -7,7 +7,7 @@
     "light": "#9E2DFF",
     "dark": "#9E2DFF"
   },
-  "favicon": "/favicon.png",
+  "favicon": "favicon.png",
   "navigation": {
     "tabs": [
       {
