@@ -11,7 +11,8 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Lope Guides",
+        "tab": "Lope Docs",
+        "icon": "book-blank",
         "groups": [
           {
             "group": "Getting started",
@@ -38,10 +39,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": []
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
