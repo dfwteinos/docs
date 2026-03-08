@@ -13,7 +13,16 @@
       {
         "tab": "Lope Docs",
         "icon": "book-blank",
-        "groups": [
+        "anchors": [
+          {
+            "anchor": "Lope Login",
+            "icon": "right-to-bracket",
+            "href": "https://app.withlope.com"
+          },
+          {
+            "anchor": "Documentation",
+            "icon": "book-open",
+            "groups": [
           {
             "group": "Getting started",
             "pages": [
@@ -36,6 +45,8 @@
               "projects/lope/functionalities/teamspaces",
               "projects/lope/functionalities/collaboration"
             ]
+          }
+        ]
           }
         ]
       }
