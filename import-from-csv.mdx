@@ -1,4 +1,136 @@
 ---
-title: 'Import from CSV'
+title: "Import from CSV"
 ---
 
+Import multiple candidates from a CSV file. You choose the destination (teamspace, client, job), map your CSV columns to Lope fields, run a health check, and import.
+
+### Supported CSV format
+
+- **File type:** `.csv` only
+- **File size:** Max 25 MB
+- **Encoding:** UTF-8 recommended
+- **First row:** Used as headers (column names)
+
+### Import flow
+
+<video controls className="w-full aspect-video rounded-xl" src="https://lope.b-cdn.net/csv_import.mp4" />
+
+1. Go to the candidates view
+2. Click **Import** → **Import CSV**
+3. **Upload** your CSV file
+4. **Choose Location** — Select teamspace, client, and optionally job. This sets where all imported candidates go.
+5. Click **Map CSV headers**
+6. **Map columns** — For each CSV column, choose a Lope field (or "Don't include" to skip)
+7. Click **Run health check** — Validates emails, dates, and flags issues
+8. **Fix issues** (optional) — Use the Edit tab to correct faulty cells
+9. Click **Import CSV**
+
+### Destination vs. column mapping
+
+**Destination** is set by the **Location** picker (teamspace → client → job). All imported candidates go there. You do **not** map CSV columns to set the destination when you've selected a client and job.
+
+- **If you select a client** — The "Client" mapping option is hidden. All candidates go to that client.
+- **If you select a job** — The "Job" mapping option is hidden. All candidates go to that job.
+- **If you select a client but no job** — You can map a CSV column to **Job**. Lope creates jobs for any job titles in the CSV that don't exist and assigns candidates to them.
+- **If you select no client** — You can map a CSV column to **Client** (client name). Candidates are imported without a client unless you select one in the Location picker.
+
+---
+
+### Standard (built-in) fields
+
+These are the built-in Lope fields you can map CSV columns to:
+
+| Mapping label | Field             | Description                                                                                                                      |
+| ------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Name          | `name`            | Candidate full name                                                                                                              |
+| Email         | `email`           | Email address (validated in health check)                                                                                        |
+| Linkedin      | `linkedin`        | LinkedIn profile URL (normalized on import)                                                                                      |
+| Github        | `github`          | GitHub profile URL (normalized on import)                                                                                        |
+| Client        | `project_name`    | Client name — only shown when you haven't selected a client in Location                                                          |
+| Job           | `job_title`       | Job title — only shown when you haven't selected a job. If client is selected, Lope creates missing jobs and assigns candidates. |
+| CV            | `pdf_storage_url` | URL to CV/resume file                                                                                                            |
+| Stage         | `stage`           | Pipeline stage (see stage values below)                                                                                          |
+| Notes         | `comments`        | Notes or comments                                                                                                                |
+
+**Stage values** — You can use numbers (0–6) or text. Lope normalizes common synonyms:
+
+| Value                                                  | Maps to     |
+| ------------------------------------------------------ | ----------- |
+| 0, "sourced", "source", "prospect", "new", "applied"   | Sourced     |
+| 1, "interview", "screen", "phone screen", "onsite"     | Interviewed |
+| 2, "not a fit", "rejected", "declined", "disqualified" | Not a fit   |
+| 3, "unassigned", "unknown", "n/a"                      | Unassigned  |
+| 4, "screened", "screening"                             | Screened    |
+| 5, "review", "reviewed", "assessment"                  | Reviewed    |
+| 6, "placed", "hired", "offer accepted"                 | Placed      |
+
+---
+
+### Custom columns
+
+Custom columns are workspace-level fields you create (e.g. "Phone", "Salary expectations", "Skills"). You can map CSV columns to existing custom fields or create new ones during import.
+
+#### Mapping to existing custom fields
+
+If your workspace has custom fields, they appear under **Custom** in the column mapping dropdown. Map a CSV column to `Custom: <field name>` to import into that field.
+
+#### Creating new custom columns during import
+
+1. For a CSV column, open the **Column Type** dropdown
+2. Click **Create new column**
+3. Enter a **Column name** (e.g. "Phone", "Portfolio URL")
+4. Choose a **Column type** (see types below)
+5. Click **Create & Map**
+
+The new field is created when you complete the import. It appears as a pending field "(new)" until then.
+
+#### Custom column types
+
+| Type             | Use for                                                 | Example CSV values                |
+| ---------------- | ------------------------------------------------------- | --------------------------------- |
+| **Text**         | Short or long text                                      | "Senior Engineer", "Berlin"       |
+| **Number**       | Numeric values                                          | "5", "120000", "3.5"              |
+| **Date**         | Dates (ISO, dd/mm/yyyy, Excel serial, etc.)             | "2025-01-15", "11-Sep-2025"       |
+| **URL**          | Web links                                               | "https://portfolio.com"           |
+| **Phone**        | Phone numbers                                           | "+1 555-123-4567"                 |
+| **Checkbox**     | Boolean (yes/no, true/false, 1/0)                       | "yes", "true", "1"                |
+| **Select**       | Single choice from options                              | "Remote" (options created if new) |
+| **Multi-select** | Multiple values, separated by semicolon, pipe, or comma | "Python;Java;React"               |
+
+**Multi-select and Select** — Values are matched to existing options by label. If a value doesn't match, a new option is created automatically.
+
+---
+
+### Don't include (ignore)
+
+Map a column to **Don't include** to skip it. The column is not imported. Use this for columns you don't need (e.g. internal IDs, duplicate data).
+
+---
+
+### Auto-suggestions
+
+When you upload a CSV, Lope suggests mappings based on:
+
+- **Header names** — Synonyms like "full name" → Name, "e-mail" → Email, "linkedin url" → Linkedin, "client" → Client, "notes" → Notes
+- **Email detection** — If no column is named "email" but values look like emails, that column may be suggested for Email
+
+You can change any suggestion before importing.
+
+---
+
+### Health check
+
+Before importing, run the **health check**. It validates:
+
+- **Invalid emails** — Flags rows where the email doesn't look valid
+- **Date format** — Warns if dates may not parse correctly
+- **Phone format** — Checks phone-like values
+- **Empty or problematic cells** — Highlights issues
+
+Use the **Edit** tab to fix faulty cells, then re-run the health check.
+
+---
+
+### Row filtering
+
+Rows where **both** name and email are empty are skipped and not imported.
