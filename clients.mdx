@@ -1,4 +1,80 @@
 ---
-title: 'Clients'
+title: Clients (Projects)
+description: Clients are companies or hiring entities you recruit for. They live inside teamspaces and contain jobs and candidates.
+sidebarTitle: Clients
 ---
 
+A **client** (also called a **project** in the database) is a company or hiring entity you're recruiting for. Clients live inside teamspaces and contain jobs and candidates.
+
+## How clients work
+
+Clients are the middle layer of Lope's hierarchy:
+
+```
+Teamspace
+└── Client
+    └── Job
+        └── Candidates
+```
+
+Each client represents one company or organization. Under a client, you create **jobs** (open positions) and add **candidates** to those jobs—or to the client itself if they're not yet assigned to a specific role.
+
+### Creating a client
+
+1. Open a teamspace in the sidebar
+2. Click **+ Add client** (or the equivalent in the clients view)
+3. Enter the client name (e.g., "Acme Corp", "Tech Startup Inc")
+4. Optionally add a description, photo, or emoji
+5. Choose **Public** or **Private**:
+   - **Public** — All teamspace members can see and work with this client
+   - **Private** — Only invited members can access
+
+### Client status
+
+Clients can be:
+
+- **Active** — Currently recruiting for this client
+- **Archived** — No longer active; kept for reference
+
+Archived clients are hidden from the main sidebar but can be viewed from the clients list.
+
+### Client permissions
+
+| Permission | Who can access |
+|------------|----------------|
+| **Public** | All teamspace members |
+| **Private** | Only members explicitly invited to the client |
+
+Access to clients is controlled via **project membership** (`projects_members`). If you're a member of a client, you can see its jobs and candidates.
+
+## What lives in a client
+
+- **Jobs** — Open positions you're filling for this client
+- **Candidates** — People you're considering, either:
+  - Assigned to a specific job
+  - Assigned to the client only (no job yet)
+  - Orphaned (no client or job—these live at the workspace level)
+
+### Candidate access
+
+Your access to candidates follows your client membership:
+
+- **Candidates with a job** — You see them if you're a member of the client
+- **Candidates with client only** — Same rule: client membership grants access
+- **Orphaned candidates** — Visible to all workspace members
+
+## Clients view
+
+From a teamspace, you can open the **Clients** view to see all clients as cards. Each card shows:
+
+- Client name and logo/emoji
+- Job count
+- Contributors (team members working on this client)
+- Status (active/archived)
+
+Click a client to open it and view its jobs and candidates.
+
+## Next steps
+
+- [Jobs](/concepts/jobs) — Create job positions under a client
+- [Import candidates](/guides/import-candidates) — Add candidates from LinkedIn, manually, or CSV
