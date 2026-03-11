@@ -2,3 +2,32 @@
 title: 'Import from CVs'
 ---
 
+Import multiple candidates from a ZIP file containing PDF CVs. Each PDF becomes one candidate. Lope parses the CV content and extracts name, skills, experience, and education.
+
+### Supported format
+
+- **File type:** `.zip` (containing PDF files only)
+- **Size limits:** 100 MB for the ZIP, 10 MB per PDF
+- **Max files:** 1000 PDFs per ZIP
+
+### How to import from CVs
+
+1. Put all PDF CVs in a single ZIP file
+2. Go to the candidates view
+3. Click **Import** in the toolbar
+4. Select **Import CVs (.zip)**
+5. Choose your ZIP file
+6. Wait for the import to complete
+
+### What happens
+
+- Each PDF is uploaded to Lope storage
+- A candidate is created for each PDF
+- CV content is parsed and saved to `cv_json` (name, skills, experience, education)
+- Candidates are created at the workspace level (no client or job by default)
+
+### Notes
+
+- Only PDF files are processed; other file types in the ZIP are skipped
+- macOS metadata files (`__MACOSX`, `._*`) are ignored
+- Invalid or corrupted PDFs are skipped and counted in the "failed" total
