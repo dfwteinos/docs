@@ -49,7 +49,7 @@ Archived clients are hidden from the main sidebar but can be viewed from the cli
 
 ### 🏢 Import LinkedIn Company as Client:
 
-<video controls className="w-full aspect-video rounded-xl" src="https://lope.b-cdn.net/ImportClientFromLinkedIn.mp4" />
+<video controls={true} className="w-full aspect-video rounded-xl" src="https://lope.b-cdn.net/ImportClientFromLinkedIn.mp4" />
 
 If a user wants to import straight from LinkedIn a company of his desire as a **Client** he can simply:
 
@@ -64,23 +64,23 @@ If a user wants to import straight from LinkedIn a company of his desire as a **
 | **Public**  | All teamspace members                         |
 | **Private** | Only members explicitly invited to the client |
 
-Access to clients is controlled via **project membership** (`projects_members`). If you're a member of a client, you can see its jobs and candidates.
+Access to clients is controlled via **client membership**. If you're a member of a client, you can see its jobs and candidates.
 
 ## What lives in a client
 
 - **Jobs** — Open positions you're filling for this client
 - **Candidates** — People you're considering, either:
-  - Assigned to a specific job
-  - Assigned to the client only (no job yet)
-  - Orphaned (no client or job—these live at the workspace level)
+  - Assigned to a specific job.
+  - Assigned to the client only (no job yet).
+  - Orphaned (no client or job—these live at the workspace level and can be found only at the **Candidates** in the sidebar).
 
 ### Candidate access
 
 Your access to candidates follows your client membership:
 
-- **Candidates with a job** — You see them if you're a member of the client
-- **Candidates with client only** — Same rule: client membership grants access
-- **Orphaned candidates** — Visible to all workspace members
+- **Candidates with a job** — You see them if you're a member of the client.
+- **Candidates with client only** — Same rule: client membership grants access.
+- **Orphaned candidates** — Visible to all workspace members (in **Candidates**).
 
 ## Clients view
 
