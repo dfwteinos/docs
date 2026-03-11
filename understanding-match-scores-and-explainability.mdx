@@ -1,4 +1,151 @@
 ---
-title: 'Understanding match scores and explainability'
+title: "Understanding match scores and explainability"
+description: "How AI Scout scores candidates, what the colors mean, and how every result is explained."
+sidebarTitle: "Scores & explainability"
 ---
 
+When you run an AI Scout search, every candidate receives a **relevance score** and a per-criteria breakdown. Lope uses color coding so you can instantly see how well a candidate matches — and every score is linked to a natural-language explanation so you understand _why_.
+
+---
+
+## Overall relevance score
+
+The overall score is a percentage (0–100%) representing how well the candidate matches across all the criteria you searched for. It is the average of the individual criterion scores, weighted equally.
+
+### Color coding (overall score)
+
+| Score range   | Color  | Label           |
+| ------------- | ------ | --------------- |
+| **85%+**      | Green  | Excellent match |
+| **70–84%**    | Yellow | Good match      |
+| **60–69%**    | Orange | Partial match   |
+| **Below 60%** | Red    | Weak match      |
+
+The color appears on the candidate card, the score pill, and the avatar ring — giving you instant visual feedback.
+
+---
+
+## Search criteria
+
+AI Scout evaluates candidates on up to five criteria, depending on what you searched for. Only criteria you actually include in your search produce scores and summary sentences.
+
+| Criterion               | What it measures                                                            | Source data                     |
+| ----------------------- | --------------------------------------------------------------------------- | ------------------------------- |
+| **Job title**           | How closely the candidate's current role matches the title you searched for | LinkedIn experience             |
+| **Skills**              | How many of the required skills the candidate has                           | LinkedIn skills, experience, CV |
+| **Location**            | How close the candidate's location is to your target                        | LinkedIn profile location       |
+| **Years of experience** | Whether the candidate's total experience meets your requirement             | LinkedIn experience history     |
+| **Industry**            | Whether the candidate's current company operates in the target industry     | Company data                    |
+
+---
+
+## Per-criterion scoring and colors
+
+Each criterion has its own thresholds. The per-criterion colors appear as **highlighted chips** in the candidate summary and as colored cells in the table view.
+
+### Job title
+
+| Score         | Color  | Meaning                                     |
+| ------------- | ------ | ------------------------------------------- |
+| **75%+**      | Green  | Strong match — current role closely aligns  |
+| **50–74%**    | Orange | Partial — role is related but not identical |
+| **Below 50%** | Red    | Weak — current role differs significantly   |
+
+### Skills
+
+| Match rate                          | Color  | Meaning                                           |
+| ----------------------------------- | ------ | ------------------------------------------------- |
+| **70%+** of required skills matched | Green  | Strong — has most or all required skills          |
+| **40–69%** matched                  | Orange | Partial — some key skills present, others missing |
+| **Below 40%** matched               | Red    | Weak — few or none of the required skills         |
+
+### Location
+
+| Score         | Color  | Meaning                                           |
+| ------------- | ------ | ------------------------------------------------- |
+| **50%+**      | Green  | Matches — candidate is in or near target location |
+| **30–49%**    | Orange | Nearby — within the broader region                |
+| **Below 30%** | Red    | Distant — outside target location                 |
+
+### Years of experience
+
+| Score         | Color  | Meaning                               |
+| ------------- | ------ | ------------------------------------- |
+| **80%+**      | Green  | Meets the experience requirement      |
+| **50–79%**    | Orange | Close — slightly under or over        |
+| **Below 50%** | Red    | Gap — significantly below requirement |
+
+### Industry
+
+| Score         | Color  | Meaning                      |
+| ------------- | ------ | ---------------------------- |
+| **50%+**      | Green  | Works in the target industry |
+| **30–49%**    | Orange | Related industry             |
+| **Below 30%** | Red    | Different industry           |
+
+---
+
+## How the summary works
+
+Each candidate card includes a natural-language summary that explains the match. The summary is **fully explainable** — every claim is grounded in the score data.
+
+### Structure
+
+1. **Opening line** — Overall relevance percentage and number of criteria evaluated. _Example: "Excellent match across 4 criteria (87%)."_
+2. **Per-criterion sentences** — One sentence per active criterion, ordered by score (strengths first). Each sentence names the specific data point and explains the match. _Example: "Currently a Senior Backend Engineer — strong match with your search."_
+3. **Highlighted chips** — Key data points inside the summary are highlighted with color-coded chips. The chip color matches the criterion's score tier (green, orange, or red).
+
+### Example summary
+
+> **Excellent match across 4 criteria (87%).** Currently a **Senior Backend Engineer** — strong match with your search. Has **all 4 required skills: Python, Django, AWS, and PostgreSQL**. Based in **Berlin** — matches your location criteria. Has **6 years of experience**, meeting your 5+ years requirement.
+
+In the summary above:
+
+- "Senior Backend Engineer" would be a **green chip** (job title match)
+- "all 4 required skills..." would be a **green chip** (skills match)
+- "Berlin" would be a **green chip** (location match)
+- "6 years of experience" would be a **green chip** (experience match)
+
+If a criterion scored lower, the chip would be **orange** or **red**, and the sentence would explain the gap.
+
+### Polished summaries
+
+After the initial deterministic summary is generated, Lope sends it to an LLM for natural-language polishing. The polished version reads more naturally while preserving all the same data points and color-coded chips. The polishing happens in the background — you see the template summary first, then it's replaced with the polished version.
+
+---
+
+## Score contribution
+
+Each criterion contributes equally to the overall score. The contribution is calculated as:
+
+```text
+contribution = criterion_score × (100 / number_of_active_criteria)
+```
+
+For example, with 5 criteria, each contributes up to 20% of the overall score. With 3 criteria, each contributes up to ~33%.
+
+Hover over a highlighted chip in the summary to see the tooltip showing the criterion's score and its contribution to the overall percentage.
+
+---
+
+## Source links
+
+Each highlighted chip in the summary links back to the source data. Hover over a chip to see:
+
+- **Job title / Years** — Links to the candidate's LinkedIn experience section
+- **Skills** — Links to the LinkedIn skills section
+- **Location** — Links to the candidate's LinkedIn profile
+- **Industry** — Links to the company's LinkedIn page and website
+
+This ensures every claim in the summary can be verified against the original source.
+
+---
+
+## Table view vs. list view
+
+AI Scout results can be viewed in two layouts:
+
+- **List view (cards)** — Shows the full summary with color-coded chips and avatar ring
+- **Table view** — Shows individual score columns (Job title, Skills, Location, Experience, Industry) with colored pills
+
+Both views use the same scoring system and color thresholds.

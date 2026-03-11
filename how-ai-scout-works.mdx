@@ -1,4 +1,531 @@
 ---
-title: 'How AI Scout works'
+title: "How AI Scout works"
 ---
 
+# AI Scout — Recruiter Guide
+
+> **For:** Recruiters and hiring managers using Lope's AI Scout\
+> **Last updated:** March 2026
+
+---
+
+## Table of Contents
+
+1. [How AI Scout Works](#1-how-ai-scout-works)
+   - [What is AI Scout?](#11-what-is-ai-scout)
+   - [The Five Dimensions of Search](#12-the-five-dimensions-of-search)
+   - [How Ranking Works](#13-how-ranking-works)
+   - [Why AI Scout is Different from Keyword Search](#14-why-ai-scout-is-different-from-keyword-search)
+2. [Writing Effective Search Prompts](#2-writing-effective-search-prompts)
+   - [The Five Search Fields](#21-the-five-search-fields)
+   - [Job Title — Best Practices](#22-job-title--best-practices)
+   - [Skills — Best Practices](#23-skills--best-practices)
+   - [Location — Best Practices](#24-location--best-practices)
+   - [Years of Experience — Best Practices](#25-years-of-experience--best-practices)
+   - [Industry — Best Practices](#26-industry--best-practices)
+   - [Combining Fields for Powerful Searches](#27-combining-fields-for-powerful-searches)
+   - [Quick Reference: Search Examples](#28-quick-reference-search-examples)
+3. [Understanding Match Scores and Explainability](#3-understanding-match-scores-and-explainability)
+   - [How Each Candidate Gets a Score](#31-how-each-candidate-gets-a-score)
+   - [What the Score Breakdown Tells You](#32-what-the-score-breakdown-tells-you)
+   - [Reading the Results: A Practical Walkthrough](#33-reading-the-results-a-practical-walkthrough)
+   - [Why Candidate A Ranks Higher Than Candidate B](#34-why-candidate-a-ranks-higher-than-candidate-b)
+   - [Common Score Patterns and What They Mean](#35-common-score-patterns-and-what-they-mean)
+   - [Frequently Asked Questions About Scoring](#36-frequently-asked-questions-about-scoring)
+
+---
+
+## 1. How AI Scout Works
+
+### 1.1 What is AI Scout?
+
+AI Scout is Lope's intelligent candidate search engine. When you describe the kind of candidate you are looking for — by job title, skills, location, experience, or industry — AI Scout searches your entire candidate pool and returns the most relevant matches, ranked from best fit to least.
+
+Unlike a traditional search that only finds exact keyword matches (e.g. typing "Software Engineer" would miss candidates titled "Full-Stack Developer"), AI Scout **understands the meaning behind your words**. It knows that "Full-Stack Developer" and "Software Engineer" are closely related roles. It knows that "Python" and "Machine Learning" are related skills. It knows that "London" and "United Kingdom" refer to the same geography.
+
+This means you spend less time tweaking search terms and more time talking to great candidates.
+
+### 1.2 The Five Dimensions of Search
+
+When you run a search, AI Scout evaluates every candidate in your pool across **five independent dimensions**. Think of these as five separate expert opinions about how well each candidate fits your criteria:
+
+| Dimension               | What It Looks At                                                 | What It Understands                                                                                                                                                                                   |
+| ----------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Job Title**           | The candidate's current or most recent role                      | Synonyms, seniority levels, and related titles. "VP of Engineering" is close to "Head of Engineering"; "Data Analyst" is close to "Business Intelligence Analyst".                                    |
+| **Skills**              | The list of skills on the candidate's profile                    | Both exact matches (the candidate literally has "Python" on their profile) and closely related skills ("Django" is related to "Python web development").                                              |
+| **Location**            | Where the candidate is based                                     | City, country, and region awareness. Searching "Germany" will surface candidates in Berlin, Munich, Hamburg, etc. Searching "EU" surfaces candidates across all European Union countries.             |
+| **Years of Experience** | Total career length, average job tenure, and current role tenure | Not just a number filter — the system ranks candidates whose experience is _closest_ to what you asked for at the top, and gradually includes those slightly outside your range.                      |
+| **Industry**            | The industries of the companies the candidate has worked at      | Inferred from the company's description, specialties, and tags — not from the candidate's job title. A "Marketing Manager" at a FinTech company will appear when you search for the FinTech industry. |
+
+Each dimension is evaluated independently. No single dimension can override the others. This prevents scenarios where a candidate with a perfect title match but zero skill overlap ends up at the top of your list.
+
+### 1.3 How Ranking Works
+
+After AI Scout evaluates every candidate across all five dimensions, it needs to combine those separate scores into **one final ranking**. Here is how:
+
+**Step 1 — Score within each dimension**
+
+For each dimension you searched (e.g. you specified a job title and skills), every candidate gets a relevance score. Candidates with the same relevance in a dimension share the same rank — the system is fair and does not arbitrarily break ties.
+
+**Step 2 — Convert scores to points**
+
+Within each dimension, candidates are awarded points based on their rank. The top-ranked candidate in that dimension gets the most points, the second gets slightly fewer, and so on. Candidates with identical scores get identical points.
+
+**Step 3 — Add up the points across all dimensions**
+
+Each candidate's points from every dimension are summed. A candidate who ranks highly across **multiple** dimensions accumulates more total points than one who is excellent in only one area.
+
+**Step 4 — Final sort**
+
+Candidates are ordered by:
+
+1. **Total points** (highest first) — the primary ranking factor
+2. **Average match quality** (highest first) — used to break ties
+3. **Number of dimensions matched** (most first) — a final tiebreaker
+
+This approach rewards **well-rounded candidates** who are strong across the board, rather than candidates who happen to be a perfect match on just one criterion.
+
+### 1.4 Why AI Scout is Different from Keyword Search
+
+| Traditional Keyword Search                                                                              | AI Scout                                                                                                     |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Only finds exact text matches                                                                           | Understands meaning, synonyms, and related concepts                                                          |
+| "Software Engineer" won't find "Full-Stack Developer"                                                   | "Software Engineer" will find "Full-Stack Developer", "Backend Engineer", "SWE", etc.                        |
+| Struggles with location variations (you'd need to search "NYC", "New York", "New York City" separately) | Understands that "NYC", "New York", "New York City" all mean the same place                                  |
+| Experience is a hard cutoff — 4.9 years fails a "\>5 years" filter                                      | Experience is scored on a curve — 4.9 years scores slightly lower than 5.1 years, but both appear in results |
+| Returns either a match or nothing                                                                       | Returns a ranked list with transparent scores explaining _why_ each candidate matched                        |
+| Each field searched independently                                                                       | All fields combined into a unified, fair ranking                                                             |
+
+---
+
+## 2. Writing Effective Search Prompts
+
+### 2.1 The Five Search Fields
+
+Every search in AI Scout can use up to five fields. **You do not have to fill in all five.** Use only the ones that matter for your role. The more fields you provide, the more refined your results will be.
+
+| Field                   | What to Enter                                                | Required? |
+| ----------------------- | ------------------------------------------------------------ | --------- |
+| **Job Title**           | The role you are hiring for                                  | No        |
+| **Skills**              | Specific skills, tools, or technologies                      | No        |
+| **Location**            | City, country, or region                                     | No        |
+| **Years of Experience** | A minimum, maximum, or range                                 | No        |
+| **Industry**            | The sector or industry the candidate should have exposure to | No        |
+
+At least **one field** must be filled in to run a search.
+
+### 2.2 Job Title — Best Practices
+
+The job title field is one of the most powerful search dimensions. AI Scout doesn't just look for the exact words you type — it understands what the role _means_.
+
+**Do:**
+
+- Use the most common version of the title: `Software Engineer`, `Product Manager`, `Recruiter`
+- Use natural language: `Senior Data Scientist`, `Head of Marketing`
+- Be specific about seniority when it matters: `Junior UX Designer` vs `Lead UX Designer`
+
+**Don't:**
+
+- List multiple different roles in one search (run separate searches instead)
+- Use internal or proprietary title conventions that wouldn't appear on LinkedIn profiles
+- Add unnecessary modifiers like company names
+
+**Examples of great job title searches:**
+
+| What You Type         | What AI Scout Understands and Matches                                                                     |
+| --------------------- | --------------------------------------------------------------------------------------------------------- |
+| `Software Engineer`   | Software Engineer, Full-Stack Developer, Backend Developer, SWE, Software Developer, Application Engineer |
+| `Product Manager`     | Product Manager, Product Lead, Product Owner, Senior PM, Head of Product                                  |
+| `Data Scientist`      | Data Scientist, Machine Learning Engineer, ML Researcher, Applied Scientist, Data Analyst (lower match)   |
+| `Recruiter`           | Recruiter, Talent Acquisition Specialist, Talent Partner, Sourcer, Recruitment Consultant                 |
+| `Head of Engineering` | Head of Engineering, VP of Engineering, Director of Engineering, Engineering Lead                         |
+
+**Tip:** If you are looking for a very niche role, try the most commonly used industry title. AI Scout works best with titles that candidates actually put on their profiles.
+
+### 2.3 Skills — Best Practices
+
+The skills search checks for both **exact matches** (the candidate has that exact skill listed) and **related skills** (semantically similar skills). Exact matches are given significantly more weight.
+
+**Do:**
+
+- List specific, concrete skills: `Python`, `Figma`, `SQL`, `Project Management`
+- Separate multiple skills with commas: `Python, Docker, Kubernetes`
+- Use the names that appear on professional profiles (e.g. `React` not `ReactJS library`)
+- Include 3–7 skills for the best results — enough to differentiate, not so many that no one matches all of them
+
+**Don't:**
+
+- Use full sentences: ~~`experience with Python programming language`~~ — just type `Python`
+- Mix skills with other criteria: ~~`Python, 5 years, London`~~ — use the dedicated fields for experience and location
+- List too many skills (15+) — this dilutes the signal
+
+**How skill matching works in practice:**
+
+If you search for `Python, Docker, AWS`:
+
+| Candidate   | Python     | Docker     | AWS       | Match Summary                                                  |
+| ----------- | ---------- | ---------- | --------- | -------------------------------------------------------------- |
+| Candidate A | Has Python | Has Docker | Has AWS   | 3/3 exact matches — top score                                  |
+| Candidate B | Has Python | Has Docker | Has Azure | 2/3 exact + Azure is related to AWS — high score               |
+| Candidate C | Has Python | —          | —         | 1/3 exact — moderate score                                     |
+| Candidate D | Has Java   | Has Docker | Has AWS   | 2/3 exact + Java is loosely related to Python — moderate score |
+
+**Tip:** The first candidate in the example above would rank highest because exact skill matches carry the most weight. Candidates with related (but not identical) skills still appear, ranked below exact matches.
+
+### 2.4 Location — Best Practices
+
+AI Scout understands geography at multiple levels — from specific cities to entire continents.
+
+**Do:**
+
+- Type naturally: `London`, `Berlin, Germany`, `United States`, `Europe`
+- Use common location names that appear on profiles
+- Search for regions when you're flexible: `EU`, `Europe`, `DACH`
+
+**Don't:**
+
+- Use postal codes or zip codes
+- Combine locations with other search criteria in this field
+
+**How location matching works:**
+
+| What You Type     | What AI Scout Matches                                                                     |
+| ----------------- | ----------------------------------------------------------------------------------------- |
+| `London`          | Candidates in London (exact) + candidates elsewhere in the United Kingdom (partial match) |
+| `Germany`         | Candidates in Berlin, Munich, Hamburg, Frankfurt, and all other German cities             |
+| `Berlin, Germany` | Best: candidates in Berlin. Also matches: candidates in Germany (slightly lower score)    |
+| `Europe` or `EU`  | Candidates across all European countries                                                  |
+| `San Francisco`   | Candidates in San Francisco (exact) + Bay Area + California (partial match)               |
+| `Remote`          | Candidates who have listed "Remote" as their location                                     |
+
+**Tip:** If you're open to multiple locations, run the search with the broadest acceptable location. For example, if you'd hire anyone in the DACH region, search `Germany` or `DACH` rather than running three separate searches for Germany, Austria, and Switzerland.
+
+### 2.5 Years of Experience — Best Practices
+
+The experience field lets you filter by total years of professional experience. Unlike a simple cutoff, AI Scout scores candidates on a **curve** — candidates closest to your target get the highest scores, while those slightly outside your range still appear but rank lower.
+
+**Supported formats:**
+
+| What You Type | What It Means                       |
+| ------------- | ----------------------------------- |
+| `> 5`         | At least 5 years of experience      |
+| `>= 3`        | 3 or more years of experience       |
+| `< 10`        | Less than 10 years of experience    |
+| `<= 7`        | 7 or fewer years of experience      |
+| `> 3, < 8`    | Between 3 and 8 years of experience |
+| `>= 2, <= 5`  | Between 2 and 5 years (inclusive)   |
+
+**How experience scoring works in practice:**
+
+If you search for `> 5` (at least 5 years):
+
+| Candidate   | Total Experience | Score                                                                                 |
+| ----------- | ---------------- | ------------------------------------------------------------------------------------- |
+| Candidate A | 7.5 years        | Very high (well above the minimum, close to the ideal range)                          |
+| Candidate B | 5.2 years        | High (just above the minimum)                                                         |
+| Candidate C | 4.5 years        | Moderate (slightly below the minimum — still appears, but ranks lower)                |
+| Candidate D | 15 years         | Moderate-high (meets the requirement, but further from the center of the ideal range) |
+| Candidate E | 1 year           | Low (significantly below the requirement)                                             |
+
+**Key insight:** The system doesn't use a hard cutoff. Candidates at 4.5 years still appear when you search `> 5`, because in practice, someone with 4.5 years of experience might be just as qualified. They simply rank below candidates with 5+ years.
+
+**In addition to total years, the system also considers:**
+
+- **Average tenure** — how long the candidate typically stays at each company
+- **Current tenure** — how long they've been in their current role
+
+These are factored into the experience score to give you a more nuanced picture of the candidate's career stability.
+
+**Tip:** Use ranges (`> 3, < 8`) when you have a specific seniority band in mind. This avoids burying your ideal mid-career candidates under very senior profiles with 20+ years.
+
+### 2.6 Industry — Best Practices
+
+The industry field searches the **companies the candidate has worked at**, not the candidate's job title. This is a powerful way to find candidates with relevant domain experience.
+
+**Do:**
+
+- Use broad industry terms: `FinTech`, `Healthcare`, `E-commerce`, `SaaS`
+- Separate multiple industries with commas: `casino, lottery, gambling`
+- Think about the kinds of companies your ideal candidate would have worked at
+
+**Don't:**
+
+- Confuse industry with job title (use the job title field for that)
+- Use overly niche terms that wouldn't appear in a company description
+
+**How industry matching works:**
+
+AI Scout looks at the candidate's employer(s) and checks:
+
+- What **industry** the company operates in
+- What the company's **description** says
+- What the company's **specialties and tags** are
+- An AI-generated **summary** of what the company does
+
+This means a "Marketing Manager" who worked at Stripe would score highly for a "FinTech" industry search — even though "FinTech" doesn't appear anywhere in their job title.
+
+**Examples:**
+
+| What You Type             | What AI Scout Finds                                                                                  |
+| ------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `FinTech`                 | Candidates who have worked at financial technology companies (Stripe, Revolut, Wise, etc.)           |
+| `Recruiting, Staffing`    | Candidates from recruitment agencies, staffing firms, and HR technology companies                    |
+| `Artificial Intelligence` | Candidates from AI labs, ML startups, and tech companies with AI divisions                           |
+| `Healthcare`              | Candidates from hospitals, health-tech companies, pharmaceutical firms, and medical device companies |
+| `SaaS`                    | Candidates from software-as-a-service companies across all sectors                                   |
+
+**Tip:** The industry search is especially useful when you're hiring for a role that requires **domain expertise** — for example, a Product Manager who has worked in FinTech before, not just any Product Manager.
+
+### 2.7 Combining Fields for Powerful Searches
+
+The real power of AI Scout comes from combining multiple fields. Here are some strategies:
+
+**Strategy 1: Start Broad, Then Narrow**
+
+1. Start with just a job title: `Data Scientist`
+2. Review the results — if too many, add skills: `Data Scientist` + skills: `Python, TensorFlow`
+3. Still too many? Add location: `Data Scientist` + `Python, TensorFlow` + `Berlin`
+
+**Strategy 2: The "Minimum Viable Search"**
+
+Use the fewest fields needed to describe your ideal candidate. Every field you add makes the search more specific — which can be good (more targeted results) or bad (you might miss great candidates who don't tick every box).
+
+Good: `Software Engineer` + `React, TypeScript` + `London` Potentially too narrow: `Software Engineer` + `React, TypeScript, Node.js, GraphQL, Docker, AWS` + `London` + `> 5, < 8` + `FinTech`
+
+**Strategy 3: The "Domain Expert" Search**
+
+When you need someone with specific industry experience, lead with industry:
+
+- Job title: `Product Manager` + Industry: `FinTech`
+- Job title: `Sales Director` + Industry: `SaaS, Enterprise Software`
+- Job title: `Nurse Practitioner` + Industry: `Healthcare`
+
+**Strategy 4: The "Seniority Band" Search**
+
+When you have a specific seniority level in mind:
+
+- Job title: `Senior Software Engineer` + Experience: `> 5, < 12`
+- Job title: `Junior Designer` + Experience: `< 3`
+- Job title: `VP of Sales` + Experience: `> 10`
+
+### 2.8 Quick Reference: Search Examples
+
+Here are ready-to-use search examples for common hiring scenarios:
+
+| Scenario                              | Job Title                  | Skills                                     | Location        | Experience | Industry               |
+| ------------------------------------- | -------------------------- | ------------------------------------------ | --------------- | ---------- | ---------------------- |
+| Senior backend engineer in Berlin     | `Senior Software Engineer` | `Python, Docker, Kubernetes`               | `Berlin`        | `> 5`      | —                      |
+| Junior designer anywhere in Europe    | `UX Designer`              | `Figma, User Research`                     | `Europe`        | `< 3`      | —                      |
+| FinTech product manager               | `Product Manager`          | —                                          | —               | `> 3`      | `FinTech`              |
+| Recruiter with agency background      | `Recruiter`                | `Sourcing, LinkedIn Recruiter`             | —               | —          | `Recruiting, Staffing` |
+| Data scientist in healthcare          | `Data Scientist`           | `Python, Machine Learning, SQL`            | —               | `> 2`      | `Healthcare`           |
+| Sales leader for SaaS                 | `Head of Sales`            | —                                          | `United States` | `> 8`      | `SaaS`                 |
+| Marketing generalist in London        | `Marketing Manager`        | `Content Marketing, SEO, Google Analytics` | `London`        | —          | —                      |
+| DevOps engineer with cloud experience | `DevOps Engineer`          | `AWS, Terraform, CI/CD`                    | —               | `> 3`      | `Technology`           |
+
+---
+
+## 3. Understanding Match Scores and Explainability
+
+One of the most important features of AI Scout is **transparency**. Every result comes with a detailed breakdown that explains _exactly_ why a candidate was ranked where they are. This section teaches you how to read and interpret those scores.
+
+### 3.1 How Each Candidate Gets a Score
+
+Every candidate in your results has:
+
+| Metric                 | What It Tells You                                                                  |
+| ---------------------- | ---------------------------------------------------------------------------------- |
+| **Rank**               | The candidate's overall position in the results (1 = best match)                   |
+| **Total Points**       | The sum of points earned across all search dimensions — the primary ranking factor |
+| **Average Score**      | The average match quality across all dimensions (shown as a percentage)            |
+| **Dimensions Matched** | How many of your search criteria the candidate was found in (e.g. "4 out of 5")    |
+
+Below the summary, you'll see a **per-dimension breakdown** — one section for each search field you used.
+
+### 3.2 What the Score Breakdown Tells You
+
+Each dimension in the breakdown shows:
+
+#### Job Title Breakdown
+
+| Field      | Meaning                                                                                                                                                                 |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Score**  | How closely the candidate's title matches yours (as a percentage). 90%+ is an excellent match; 70%+ is a good match; below 60% means the title is only loosely related. |
+| **Title**  | The candidate's actual job title from their profile                                                                                                                     |
+| **Points** | The ranking points awarded for this dimension                                                                                                                           |
+
+Example: You searched for "Software Engineer". A candidate titled "Full-Stack Developer" might score 85%, while "Project Manager" might score 35%.
+
+#### Skills Breakdown
+
+| Field              | Meaning                                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------------------- |
+| **Exact Matches**  | How many of your requested skills appear word-for-word on the candidate's profile (e.g. "3 out of 5") |
+| **Matched Skills** | The specific skills that matched exactly                                                              |
+| **Missing Skills** | The skills from your search that the candidate does not have                                          |
+| **Score**          | A combined score blending exact matches (heavily weighted) and related-skill similarity               |
+| **Points**         | The ranking points awarded for this dimension                                                         |
+
+Example: You searched for `Python, Docker, AWS`. The breakdown shows:
+
+- Matched: Python, Docker (2 out of 3 exact)
+- Missing: AWS
+- The candidate also has "Azure" (related to AWS), which slightly boosts their similarity score
+
+#### Location Breakdown
+
+| Field                 | Meaning                                                                                 |
+| --------------------- | --------------------------------------------------------------------------------------- |
+| **Exact Matches**     | Whether the candidate's listed location matches your search exactly (e.g. "1 out of 1") |
+| **Matched Locations** | The location components that matched (city, country, or both)                           |
+| **Score**             | A combined score of exact geographic match and semantic proximity                       |
+| **Location**          | The candidate's actual location from their profile                                      |
+| **Points**            | The ranking points awarded for this dimension                                           |
+
+Example: You searched for "Berlin". A candidate in "Berlin, Germany" scores 100% (exact). A candidate in "Munich, Germany" scores ~70% (same country, different city). A candidate in "London, United Kingdom" scores ~30% (different country entirely).
+
+#### Experience Breakdown
+
+| Field              | Meaning                                                                                                                                                      |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Total Years**    | The candidate's total professional experience in years                                                                                                       |
+| **Average Tenure** | How long the candidate typically stays at each job (in years)                                                                                                |
+| **Current Tenure** | How long they've been in their current role (in years)                                                                                                       |
+| **Within Target**  | Whether the candidate falls within your specified range. A checkmark means yes; a cross means they're outside the range but still relevant enough to appear. |
+| **Points**         | The ranking points awarded for this dimension                                                                                                                |
+
+Example: You searched for `> 5`. A candidate with 7.2 years shows "Within Target: Yes" and gets high points. A candidate with 4.5 years shows "Within Target: No" but still appears with moderate points because they're close.
+
+#### Industry Breakdown
+
+| Field       | Meaning                                                                              |
+| ----------- | ------------------------------------------------------------------------------------ |
+| **Score**   | How closely the candidate's employer(s) match your industry search (as a percentage) |
+| **Company** | The name of the company used for matching                                            |
+| **Points**  | The ranking points awarded for this dimension                                        |
+
+Example: You searched for "FinTech". A candidate who worked at Stripe scores 95%. A candidate who worked at a traditional bank scores ~60% (related to finance, but not specifically FinTech). A candidate who worked at a restaurant chain scores ~10%.
+
+### 3.3 Reading the Results: A Practical Walkthrough
+
+Let's walk through a real example. Imagine you searched for:
+
+- **Job Title:** `Senior Software Engineer`
+- **Skills:** `Python, React, Docker`
+- **Location:** `Berlin`
+- **Experience:** `> 3`
+
+Here's how to read the top three results:
+
+---
+
+**Rank #1 — Total Points: 350 | Average Score: 88% | Matched: 4/4 dimensions**
+
+| Dimension  | Details                                                 |
+| ---------- | ------------------------------------------------------- |
+| Job Title  | "Senior Full-Stack Developer" — Score: 87%              |
+| Skills     | Matched: Python, React, Docker (3/3 exact) — Score: 95% |
+| Location   | Berlin, Germany (exact city match) — Score: 100%        |
+| Experience | 6.2 years, within target — Score: 82%                   |
+
+**Why they're #1:** Perfect skill match (3/3), exact location match, closely related title, and experience within range. Strong across all four dimensions.
+
+---
+
+**Rank #2 — Total Points: 310 | Average Score: 82% | Matched: 4/4 dimensions**
+
+| Dimension  | Details                                                          |
+| ---------- | ---------------------------------------------------------------- |
+| Job Title  | "Software Engineer" — Score: 92%                                 |
+| Skills     | Matched: Python, Docker (2/3 exact). Missing: React — Score: 78% |
+| Location   | Berlin, Germany (exact city match) — Score: 100%                 |
+| Experience | 5.0 years, within target — Score: 75%                            |
+
+**Why they're #2:** The title is actually a slightly closer match (92% vs 87%), but the missing React skill (2/3 vs 3/3) and lower experience score bring their total points below Rank #1.
+
+---
+
+**Rank #3 — Total Points: 280 | Average Score: 76% | Matched: 4/4 dimensions**
+
+| Dimension  | Details                                                          |
+| ---------- | ---------------------------------------------------------------- |
+| Job Title  | "Backend Developer" — Score: 75%                                 |
+| Skills     | Matched: Python, Docker (2/3 exact). Missing: React — Score: 72% |
+| Location   | Munich, Germany (same country, different city) — Score: 68%      |
+| Experience | 8.1 years, within target — Score: 70%                            |
+
+**Why they're #3:** They match on skills and experience, and the title is related. But they're in Munich (not Berlin), which lowers the location score, and their title is less directly relevant.
+
+---
+
+### 3.4 Why Candidate A Ranks Higher Than Candidate B
+
+The ranking system is designed to be **intuitive and fair**. Here are the key principles:
+
+**Well-rounded beats one-dimensional.** A candidate who scores 80% across all four dimensions will rank higher than a candidate who scores 100% on job title but only 50% on skills, 40% on location, and 0% on experience — even though the second candidate has a "perfect" title match.
+
+**More dimensions matched = higher ranking.** If two candidates have the same total points, the one who appeared in more of your search dimensions ranks higher. A candidate found in all 5 dimensions is generally a better fit than one found in only 2, even if the 2-dimension candidate has slightly higher individual scores.
+
+**Exact matches matter most for skills.** For skills specifically, having the exact skill listed on a profile counts much more than having a related skill. "Python" matching "Python" is worth significantly more than "Java" matching "Python" (even though they are somewhat related).
+
+**Ties are broken fairly.** When multiple candidates have the same total points, the system breaks ties by their average match quality (higher is better), then by how many dimensions they matched in (more is better). Candidates with identical scores in a dimension always receive the same number of points — no candidate is arbitrarily ranked above another equally qualified person.
+
+### 3.5 Common Score Patterns and What They Mean
+
+Here are patterns you'll frequently see in your results, along with what they indicate:
+
+| Pattern                                                | What It Means                                                                                                                                   | What to Do                                                                                                                                 |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| **High total points, high average score (85%+)**       | This is a strong, well-rounded match. The candidate fits your criteria across the board.                                                        | Prioritize reaching out.                                                                                                                   |
+| **High total points but lower average score (65–80%)** | The candidate matches many of your criteria but isn't a perfect fit in any one area. Still a solid match overall.                               | Review the breakdown — the weaker dimension might not matter to you.                                                                       |
+| **Matched in only 2 out of 5 dimensions**              | The candidate is relevant on some criteria but missing data or a poor fit on others.                                                            | Check which dimensions are missing — it might be that the candidate simply hasn't listed skills on their profile, not that they lack them. |
+| **High job title score, low skill score**              | The candidate has the right role but may lack specific technical skills you need.                                                               | Good for senior/leadership roles where skills are less prescriptive. Might warrant a closer look.                                          |
+| **High skill score, low job title score**              | The candidate has the right skills but a different title. They might be in a related role or transitioning careers.                             | Great for non-traditional candidates or career-changers.                                                                                   |
+| **Perfect location match but low everything else**     | The candidate happens to be in the right place but isn't a strong fit otherwise. They appear low in the rankings — this is working as intended. | Skip them unless location is your only criterion.                                                                                          |
+| **Experience "outside target" but still in results**   | The candidate's experience is slightly outside your range (e.g., 4.5 years when you searched for \> 5).                                         | Don't dismiss them automatically — 4.5 vs 5.0 years is rarely a meaningful difference.                                                     |
+
+### 3.6 Frequently Asked Questions About Scoring
+
+**Q: Why does a candidate appear in my results even though they don't meet all my criteria?**
+
+A: AI Scout is designed to surface the best available candidates, not to hard-filter your pool. A candidate who matches 4 out of 5 dimensions strongly is almost certainly worth reviewing, even if they're slightly short on one criterion. Hard filters (like requiring exactly 5+ years) would hide candidates at 4.9 years who might be perfect in every other way.
+
+**Q: Why does a candidate with a slightly lower title match sometimes rank higher than one with a "perfect" title?**
+
+A: Because ranking is based on the _combined_ score across all dimensions, not just one. A candidate with an 85% title match, 95% skill match, and 100% location match will rank higher than a candidate with a 95% title match but 50% skill match and 40% location match. The system rewards overall fit.
+
+**Q: What does it mean when a candidate has 0% in one dimension?**
+
+A: It means the candidate had no data or no relevance in that dimension. For example, if a candidate hasn't listed any skills on their profile, they'd score 0% on skills — but they can still rank well if they're strong on job title, location, and experience. A 0% doesn't mean they're unqualified; it means there wasn't enough profile data to evaluate that dimension.
+
+**Q: How often are scores and rankings updated?**
+
+A: Scores are calculated fresh every time you run a search. There's no stale data — AI Scout always uses the latest candidate profiles in your pool.
+
+**Q: Can I trust a 90%+ match?**
+
+A: A 90%+ match across multiple dimensions is a very strong signal. However, AI Scout evaluates _profile data_, not the person themselves. A 90% match means the candidate's profile is highly aligned with what you're looking for. You should still review their full profile and assess fit through a conversation.
+
+**Q: Why do some candidates appear in my results but with very low scores?**
+
+A: These are candidates who have _some_ relevance to your search but are weak matches overall. They appear at the bottom of your ranked list. Focus your attention on the top-ranked results — the system puts the most relevant candidates first.
+
+**Q: I searched for a very niche role and got few results. What should I do?**
+
+A: Try broadening your search:
+
+1. Use a more common job title (e.g., "Software Engineer" instead of "Platform Reliability Engineer")
+2. Reduce the number of required skills
+3. Broaden the location (e.g., "Europe" instead of "Berlin")
+4. Widen the experience range
+5. Remove the industry filter
+
+Start with fewer criteria and add them back one at a time to find the right balance between specificity and volume.
+
+**Q: What happens if I only fill in one field?**
+
+A: AI Scout will rank candidates based solely on that dimension. For example, searching only by `Skills: Python, Docker` will rank candidates purely by their skill relevance. This is perfectly valid, though combining multiple fields typically produces more meaningful rankings since the system can evaluate candidates from multiple angles.
+
+---
+
+_This guide is maintained alongside the AI Scout product. If you have questions not covered here, please reach out to the Lope team._

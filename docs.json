@@ -57,7 +57,6 @@
                 "group": "AI Scout (Candidate Search)",
                 "pages": [
                   "how-ai-scout-works",
-                  "writing-effective-search-prompts",
                   "understanding-match-scores-and-explainability"
                 ]
               }
