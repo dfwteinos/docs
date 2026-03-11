@@ -23,30 +23,68 @@
             "anchor": "Documentation",
             "icon": "book-open",
             "groups": [
-          {
-            "group": "Getting started",
-            "pages": [
-              "projects/lope/getting-started/welcome",
-              "projects/lope/getting-started/lope-overview"
+              {
+                "group": "Getting started",
+                "pages": [
+                  "projects/lope/getting-started/welcome",
+                  "projects/lope/getting-started/lope-overview"
+                ]
+              },
+              {
+                "group": "Core Concepts",
+                "pages": [
+                  "workspaces",
+                  "teamspaces",
+                  "clients",
+                  "jobs"
+                ]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  {
+                    "group": "Import Candidates into Lope",
+                    "pages": [
+                      "add-candidates-manually",
+                      "import-from-csv",
+                      "import-from-cvs",
+                      "from-linked-in-chrome-extension"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "AI Scout (Candidate Search)",
+                "pages": [
+                  "how-ai-scout-works",
+                  "writing-effective-search-prompts",
+                  "understanding-match-scores-and-explainability"
+                ]
+              },
+              {
+                "group": "Integrations & Settings",
+                "pages": [
+                  "inviting-team-members",
+                  "custom-fields-for-candidates"
+                ]
+              },
+              {
+                "group": "Daily work",
+                "pages": [
+                  "projects/lope/daily-work/automation-integrations",
+                  "projects/lope/daily-work/lope-pipeline"
+                ]
+              },
+              {
+                "group": "Functionalities",
+                "pages": [
+                  "projects/lope/functionalities/candidates-data",
+                  "projects/lope/functionalities/ai-features",
+                  "projects/lope/functionalities/teamspaces",
+                  "projects/lope/functionalities/collaboration"
+                ]
+              }
             ]
-          },
-          {
-            "group": "Daily work",
-            "pages": [
-              "projects/lope/daily-work/automation-integrations",
-              "projects/lope/daily-work/lope-pipeline"
-            ]
-          },
-          {
-            "group": "Functionalities",
-            "pages": [
-              "projects/lope/functionalities/candidates-data",
-              "projects/lope/functionalities/ai-features",
-              "projects/lope/functionalities/teamspaces",
-              "projects/lope/functionalities/collaboration"
-            ]
-          }
-        ]
           }
         ]
       },
