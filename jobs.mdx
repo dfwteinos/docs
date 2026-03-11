@@ -1,5 +1,68 @@
 ---
 title: "Jobs"
+description: "Jobs are open positions under a client. They contain candidates and define the role you're recruiting for."
+sidebarTitle: "Jobs"
 ---
 
-d
+A **job** (or **job position**) is an open role you're recruiting for. Jobs live under clients and contain candidates in your pipeline.
+
+## How jobs work
+
+Jobs are the most granular level of the recruitment hierarchy:
+
+```text
+Client
+└── Job
+    └── Candidates
+```
+
+Each job has a title, optional description, and a pipeline of candidates. You can use the job description for AI-powered features like candidate fit scoring and AI Scout search.
+
+### Creating a job
+
+<Frame>
+  ![Create AJOB](/images/CreateAJOB.png)
+</Frame>
+
+1. Open a client (from a teamspace).
+2. Click **\+ (Add a new job)**.
+3. Enter the job title (e.g., "Senior Backend Engineer", "Product Manager").
+4. Optionally add a job description.
+5. Choose **Public** or **Private**:
+   - **Public** — All client members can see and work with this job.
+   - **Private** — Only invited members can access.
+
+### 📋 Import LinkedIn Job Posting as Job:
+
+<video controls className="w-full aspect-video rounded-xl" src="https://lope.b-cdn.net/JobCreationLinkedInImport.mp4" />
+
+If a user wants to import straight from LinkedIn a job post of his desire as a **Job** inside Lope he can simply:
+
+1. Click **\+ (Add a new job)** under any Client from the sidebar.
+2. Paste the **LinkedIn url** from that job post (i.e `https:www.linkedin.com/jobs/view/job_id` ).
+3. Click **Import data.**
+
+### Job permissions
+
+| Permission  | Who can access                             |
+| ----------- | ------------------------------------------ |
+| **Public**  | All client members                         |
+| **Private** | Only members explicitly invited to the job |
+
+Job access is inherited from **client membership**. If you're a member of the client, you can access its public jobs. Private jobs require an explicit invite.
+
+## What lives in a job
+
+- **Candidates** — People in your pipeline for this role
+- **Pipeline stages** — Sourced, Screened, Interviewed, Reviewed, Not a fit, Placed, Unassigned
+
+Candidates move through stages as you evaluate them. The pipeline view shows counts per stage.
+
+## Jobs in the sidebar
+
+Jobs appear under their client when you expand the client in the sidebar. Click a job to open its candidate pipeline and data table.
+
+## Next steps
+
+- [Import candidates](/guides/import-candidates) — Add candidates to a job
+- [AI Scout](/ai-scout/how-it-works) — Search for candidates by job criteria
