@@ -17,7 +17,7 @@
           {
             "anchor": "Lope Login",
             "icon": "right-to-bracket",
-            "href": "https://www.withlope.com/login"
+            "href": "https://app.withlope.com"
           },
           {
             "anchor": "Documentation",
@@ -31,6 +31,37 @@
                 ]
               },
               {
+                "group": "Daily work",
+                "pages": [
+                  "projects/lope/daily-work/automation-integrations",
+                  "projects/lope/daily-work/lope-pipeline"
+                ]
+              },
+              {
+                "group": "Functionalities",
+                "pages": [
+                  "projects/lope/functionalities/candidates-data",
+                  "projects/lope/functionalities/ai-features",
+                  "projects/lope/functionalities/teamspaces",
+                  "projects/lope/functionalities/collaboration"
+                ]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  {
+                    "group": "Import Candidates",
+                    "icon": "arrow-right-from-bracket",
+                    "pages": [
+                      "1-manual-insertion",
+                      "2-chrome-extension",
+                      "3-cv-import",
+                      "4-csv-import"
+                    ]
+                  }
+                ]
+              },
+              {
                 "group": "Core Concepts",
                 "pages": [
                   "workspaces",
@@ -40,24 +71,18 @@
                 ]
               },
               {
-                "group": "Guides",
-                "pages": [
-                  {
-                    "group": "Import Candidates into Lope",
-                    "pages": [
-                      "add-candidates-manually",
-                      "import-from-csv",
-                      "import-from-cvs",
-                      "from-linked-in-chrome-extension"
-                    ]
-                  }
-                ]
-              },
-              {
                 "group": "AI Scout (Candidate Search)",
                 "pages": [
                   "how-ai-scout-works",
+                  "writing-effective-search-prompts",
                   "understanding-match-scores-and-explainability"
+                ]
+              },
+              {
+                "group": "Integrations & Settings",
+                "pages": [
+                  "inviting-team-members",
+                  "custom-fields-for-candidates"
                 ]
               }
             ]
@@ -92,15 +117,15 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
