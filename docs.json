@@ -31,13 +31,6 @@
                 ]
               },
               {
-                "group": "Daily work",
-                "pages": [
-                  "projects/lope/daily-work/automation-integrations",
-                  "projects/lope/daily-work/lope-pipeline"
-                ]
-              },
-              {
                 "group": "Functionalities",
                 "pages": [
                   "projects/lope/functionalities/candidates-data",
