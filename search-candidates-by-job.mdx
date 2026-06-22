@@ -1,0 +1,85 @@
+---
+title: "Search candidates by job"
+description: "Turn any job and its description into a ready-to-run AI Scout search in one click."
+sidebarTitle: "Search by job"
+---
+
+Already have a job written up? Let it do the searching for you. In AI Scout you can switch from writing a prompt to **searching based on a job** — pick one of your open roles and Lope turns its title and description into a complete, ranked search. No prompt to write from scratch.
+
+## Why use it
+
+Most roles you recruit for are already described in detail: a title, responsibilities, must-have skills, location, seniority. Searching by job reuses that description instead of asking you to retype it. Lope reads the role, drafts the search for you, and lets you fine-tune before you run it.
+
+<Tip>
+  The better your job description, the sharper the search. A clear title plus a few lines on skills, seniority, and location gives Lope the most to work with.
+</Tip>
+
+## Run a search from a job
+
+<Steps>
+  <Step title="Open AI Scout and switch to Search based on job">
+    At the top of AI Scout, toggle from **Search by prompt** to **Search based on job**.
+
+    <Frame>
+      ![Search based on job mode in AI Scout, with the job picker ready](/images/SearchBasedOnJob.png)
+    </Frame>
+  </Step>
+  <Step title="Pick a job">
+    Open **Pick a job to search** and choose one of your open roles. Lope reads that job's title and description and generates the search automatically.
+  </Step>
+  <Step title="Review the generated search">
+    Lope writes a plain-language prompt describing the ideal candidate and lights up the criteria it found — **Job Title**, **Location**, **Skills**, **Years of Experience**, and **Industry**. It also shows a salary band pulled straight from the job description when one is available.
+
+    <Frame>
+      ![A generated search for a Technical Support Manager role, with active criteria, a salary band, and a suggestion to add skills](/images/SearchBasedOnJobGenerated.png)
+    </Frame>
+  </Step>
+  <Step title="Take any suggestions (optional)">
+    Lope may suggest ways to sharpen the search — for example, adding relevant skills for the role. Choose **Accept all** to apply them, or **Dismiss** to keep your version. You can edit the prompt directly at any time.
+  </Step>
+  <Step title="Choose where to search and run">
+    Pick your source — **Internal** (your own database), **Mixed**, or **External** — then run the search. This only changes _where_ Lope looks, not what it searches for. Lope takes you straight to the ranked results.
+  </Step>
+</Steps>
+
+<Note>
+  A job needs a **title** and a **description** before Lope can generate a search from it. If a job won't generate, open it, add a few lines describing the role, and try again.
+</Note>
+
+## Fine-tune before you run
+
+Want more control? Once Lope drafts the search you can adjust it before running:
+
+- Edit the prompt directly, or add and remove the criteria Lope pulled from the description — titles, skills, locations, experience ranges, or industries.
+- Open **Advanced weights** to set how much each signal matters. Slide **Titles**, **Skills**, **Location**, **Experience**, and **Industry** up or down so the ranking reflects what's most important for this role.
+
+Everything you change applies to this search only — your saved job stays as it is.
+
+<Tip>
+  You can also launch this search straight from a job: open the job and click **Find candidates** to jump into the same generated search.
+</Tip>
+
+## What you get back
+
+Running the search lands you in AI Scout with a ranked list of candidates. Each one gets a relevance score and a plain-language explanation of why they matched, criterion by criterion. To learn how the scoring and colors work, see [Understanding match scores](/understanding-match-scores-and-explainability).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A job won't generate a search">
+    Lope needs something to work from. Make sure the job has a **title** and a **description**. Open the job, add a few lines about the role, and try again.
+  </Accordion>
+  <Accordion title="The generated search doesn't match what I had in mind">
+    Edit it before running. You can rewrite the prompt directly, adjust the criteria, or open **Advanced weights**. If Lope offers suggestions, **Accept all** applies them in one click. A richer job description also produces a stronger draft.
+  </Accordion>
+  <Accordion title="I'm not seeing enough candidates">
+    Switch the source from **Internal** to **Mixed** or **External** to widen the search beyond your own database, then run it again. If it still looks off, contact support with the job link.
+  </Accordion>
+</AccordionGroup>
+
+<Check>
+  - In AI Scout, switch to **Search based on job**
+  - Pick a job and review the auto-generated prompt and criteria
+  - Accept any suggestions, or refine filters and weights
+  - Choose Internal, Mixed, or External, then run
+</Check>
