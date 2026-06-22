@@ -10,6 +10,8 @@ Already have a job written up? Let it do the searching for you. In AI Scout you 
 
 Most roles you recruit for are already described in detail: a title, responsibilities, must-have skills, location, seniority. Searching by job reuses that description instead of asking you to retype it. Lope reads the role, drafts the search for you, and lets you fine-tune before you run it.
 
+It's also a quality-of-life shortcut for everyday sourcing. You already have the job in Lope — including roles you [import from LinkedIn](/jobs) — so you can go from posting to ranked candidates without rebuilding the same criteria by hand. Import the job, switch to **Search based on job**, run the search, and start filling the role with strong matches right away.
+
 <Tip>
   The better your job description, the sharper the search. A clear title plus a few lines on skills, seniority, and location gives Lope the most to work with.
 </Tip>
@@ -28,7 +30,11 @@ Most roles you recruit for are already described in detail: a title, responsibil
     Open **Pick a job to search** and choose one of your open roles. Lope reads that job's title and description and generates the search automatically.
   </Step>
   <Step title="Review the generated search">
-    Lope writes a plain-language prompt describing the ideal candidate and lights up the criteria it found — **Job Title**, **Location**, **Skills**, **Years of Experience**, and **Industry**. It also shows a salary band pulled straight from the job description when one is available.
+    Lope writes a plain-language prompt describing the ideal candidate and lights up the criteria it found — **Job Title**, **Location**, **Skills**, **Years of Experience**, and **Industry**. When pay is mentioned in the job description, Lope surfaces that salary band. It also runs a **salary range estimation** to suggest market-value benchmarks for the role.
+
+    <Info>
+      **Salary range estimation** goes beyond what the job posting states. Lope can estimate a market-value salary band for the role — useful when the description is vague or leaves pay out entirely. This feature is still being refined, so treat the estimate as a starting point rather than a final number.
+    </Info>
 
     <Frame>
       ![A generated search for a Technical Support Manager role, with active criteria, a salary band, and a suggestion to add skills](/images/SearchBasedOnJobGenerated.png)
@@ -48,12 +54,21 @@ Most roles you recruit for are already described in detail: a title, responsibil
 
 ## Fine-tune before you run
 
-Want more control? Once Lope drafts the search you can adjust it before running:
+Want more control? Once Lope drafts the search, adjust it before you hit **Run Search**:
 
-- Edit the prompt directly, or add and remove the criteria Lope pulled from the description — titles, skills, locations, experience ranges, or industries.
-- Open **Advanced weights** to set how much each signal matters. Slide **Titles**, **Skills**, **Location**, **Experience**, and **Industry** up or down so the ranking reflects what's most important for this role.
+- **Edit the prompt** — Click the pencil icon on the generated text and rewrite it directly.
+- **Review applied filters** — Lope shows what it pulled from the job as tags (job title, experience, skills, and more).
+- **Open Edit filters** — Click **Edit filters** to open the **Search Filters** modal. Pick and choose across **Job Title**, **Location**, **Skills**, **Years of Experience**, and **Industry**: swap the title, add or remove skills, set locations, and adjust the minimum years of experience. You can also mark skills as optional or use **Find similar** to expand the list.
 
 Everything you change applies to this search only — your saved job stays as it is.
+
+<Frame>
+  ![A generated job-based search with applied filter tags and the Edit filters and Run Search buttons](/images/SearchBasedOnJobFineTune.png)
+</Frame>
+
+<Frame>
+  ![The Search Filters modal for fine-tuning job title, location, skills, experience, and industry before running](/images/SearchFiltersModal.png)
+</Frame>
 
 <Tip>
   You can also launch this search straight from a job: open the job and click **Find candidates** to jump into the same generated search.
@@ -70,7 +85,7 @@ Running the search lands you in AI Scout with a ranked list of candidates. Each 
     Lope needs something to work from. Make sure the job has a **title** and a **description**. Open the job, add a few lines about the role, and try again.
   </Accordion>
   <Accordion title="The generated search doesn't match what I had in mind">
-    Edit it before running. You can rewrite the prompt directly, adjust the criteria, or open **Advanced weights**. If Lope offers suggestions, **Accept all** applies them in one click. A richer job description also produces a stronger draft.
+    Edit it before running. Rewrite the prompt directly, click **Edit filters** to adjust job title, location, skills, experience, or industry, or choose **Accept all** if Lope offers suggestions. A richer job description also produces a stronger draft.
   </Accordion>
   <Accordion title="I'm not seeing enough candidates">
     Switch the source from **Internal** to **Mixed** or **External** to widen the search beyond your own database, then run it again. If it still looks off, contact support with the job link.
@@ -80,6 +95,6 @@ Running the search lands you in AI Scout with a ranked list of candidates. Each 
 <Check>
   - In AI Scout, switch to **Search based on job**
   - Pick a job and review the auto-generated prompt and criteria
-  - Accept any suggestions, or refine filters and weights
+  - Accept any suggestions, or fine-tune in **Edit filters**
   - Choose Internal, Mixed, or External, then run
 </Check>
