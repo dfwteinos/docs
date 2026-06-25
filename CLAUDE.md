@@ -47,7 +47,7 @@ place those belong; don't copy that style into recruiter pages.
 The full style guide is `.cursor/rules.md`. Summary:
 
 - **Audience:** busy recruiters comfortable with SaaS, not with engineering jargon.
-- **Voice:** conversational, confident, plain language. Short sentences (<20 words).
+- **Voice:** conversational, confident, plain language. Short sentences (under 20 words).
   Lead every page with a one-paragraph value/outcome statement, then 3–5 scannable
   H2 sections. Headings start at H2.
 - **Focus on what users see** (tabs, buttons, dashboards) and recruiter goals
@@ -73,11 +73,10 @@ sidebarTitle: "Clients"
 Recruiter-friendly: `<Card>`/`<Columns>`/`<CardGroup>`, `<Steps>`/`<Step>`,
 `<Note>` `<Tip>` `<Warning>` `<Check>` `<Info>`, `<Frame>`, `<Accordion>`/
 `<AccordionGroup>`, `<Tooltip>`. Use `<Steps>` only for short hands-on flows
-(<5 steps). Avoid developer blocks (`CodeGroup`, `ResponseField`, `ParamField`,
+(fewer than 5 steps). Avoid developer blocks (`CodeGroup`, `ResponseField`, `ParamField`,
 `RequestExample`, `ResponseExample`) outside `api-reference/`.
 
-The changelog uses `<Update label="May 6, 2026" tags={["Interviews"]}>` blocks,
-newest first.
+The changelog uses `Update` blocks with `label` and `tags` props, newest first.
 
 ## Previewing locally
 ```

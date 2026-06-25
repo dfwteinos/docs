@@ -1,0 +1,119 @@
+---
+title: "Lope MCP"
+description: "Connect Lope to Claude, ChatGPT, Gemini, and Microsoft Copilot. Search candidates, run AI Scout, and take action — all from inside your AI tool of choice."
+sidebarTitle: "Lope MCP"
+icon: "robot"
+keywords: ["MCP", "AI assistant", "Claude", "ChatGPT", "Gemini", "Microsoft Copilot", "integration"]
+---
+
+Your entire Lope workspace — candidates, jobs, clients, interviews, and AI Scout — is now accessible from any AI assistant that supports MCP. Ask in plain language, get answers from your real data, and take action without leaving the conversation.
+
+## What you can do
+
+Once connected, your AI assistant can work with Lope directly:
+
+- **Search your candidate pool** — "Find senior React developers in Berlin with 5+ years of experience"
+- **Retrieve candidate details** — "What's Maria Santos' current pipeline stage and LinkedIn URL?"
+- **Run AI Scout searches** — "Search for product managers with fintech backgrounds"
+- **Look up jobs and clients** — "Show me all open roles under Acme Corp"
+- **Check interview transcripts** — "What did the candidate say about remote work in yesterday's interview?"
+- **Manage shortlists** — "Add the top 3 from that search to my VP Engineering shortlist"
+- **Update candidates** — "Move João Rodrigues to Shortlisted"
+
+## Connect Claude
+
+Requires a Pro, Max, Team, or Enterprise plan on Claude.
+
+<Steps>
+  <Step title="Open Claude settings">
+    Go to [Claude settings → Connectors](https://claude.ai/settings/connectors) in your browser or the Claude desktop app.
+  </Step>
+  <Step title="Add the Lope connector">
+    Click **Add custom connector**, give it the name **Lope**, and paste this URL:
+
+    ```
+    https://mcp.withlope.com/mcp
+    ```
+  </Step>
+  <Step title="Connect and sign in">
+    Click **Add → Connect**, then sign in with your Lope account when prompted. Once authorized, you can ask Claude anything about your candidates or pipeline.
+  </Step>
+</Steps>
+
+## Connect ChatGPT
+
+<Steps>
+  <Step title="Enable Developer Mode">
+    In ChatGPT, open **Settings → Apps & Connectors → Advanced settings** and toggle **Developer mode** on.
+  </Step>
+  <Step title="Create the Lope connector">
+    Go to **Settings → Apps & Connectors** and click **Create**. Enter **Lope** as the name and paste the URL:
+
+    ```
+    https://mcp.withlope.com/mcp
+    ```
+
+    Click **Create**. If the connection succeeds, you'll see the list of Lope tools.
+  </Step>
+  <Step title="Use Lope in a chat">
+    Open a new chat, click the **+** button near the message composer, choose **More**, and select **Lope** from the list. You can now ask anything about your pipeline.
+  </Step>
+</Steps>
+
+## Connect Gemini or Microsoft Copilot
+
+Setup for Gemini and Microsoft Copilot is assisted — the Lope team will configure it for you.
+
+<Card icon="envelope" href="mailto:support@withlope.com" title="Contact support to get set up">
+  Email support@withlope.com and mention which AI tool you want to connect. The team will handle the setup.
+</Card>
+
+## What permissions you're granting
+
+When you authorize any AI client, Lope shows a consent screen where you choose exactly what the app can access. Read permissions are on by default; write permissions are opt-in.
+
+| Permission | What it allows |
+|---|---|
+| Read workspace | View workspace name and metadata |
+| Read candidates | Search and view candidate profiles |
+| Read jobs | View job positions and their candidates |
+| Read projects | View clients/projects and their candidates |
+| Read shortlists | View shortlists and shortlist members |
+| Read Scout | View AI Scout search history and results |
+| Read interviews | View interviews, transcripts, and AI summaries |
+| Write candidates | Create, update, move stage, and archive candidates |
+| Write projects | Create and update clients/projects |
+| Write jobs | Create and update job positions |
+| Write shortlists | Create, edit, and manage shortlist members |
+| Write Scout | Save internal searches or start Mixed/External sourcing runs |
+| Write interviews | Schedule or cancel the recording bot |
+| Write workspace | Update workspace name, description, or photo |
+
+<Warning>
+  **Write Scout** can trigger External sourcing runs that pull candidates from LinkedIn and count against your plan's usage. Only enable it if you want the AI to actively source on your behalf.
+</Warning>
+
+<Tip>
+  For everyday use, read-only is plenty. You can revoke access and reconnect with different permissions at any time.
+</Tip>
+
+## Managing connected apps
+
+All authorized AI clients appear under **Settings → Developer access → Connected MCP apps**. You can see which permissions each app holds and click **Revoke** to cut off access immediately.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The AI says it can't find Lope or the tools aren't appearing">
+    Make sure the connector URL is exactly `https://mcp.withlope.com/mcp`. Try revoking the connector and adding it again, then sign in fresh.
+  </Accordion>
+  <Accordion title="I'm getting an authorization error">
+    Go to **Settings → Developer access → Connected MCP apps**, revoke the app, and reconnect it to prompt a fresh sign-in.
+  </Accordion>
+  <Accordion title="I'm getting a 'permission denied' error">
+    The app doesn't have the right permission for the action. Revoke the connection, reconnect, and enable the required write permission on the consent screen.
+  </Accordion>
+  <Accordion title="Scout searches are returning 'still running'">
+    Mixed and External sourcing runs are asynchronous. Ask the AI to check back in a few seconds, or ask it to wait for the results before responding.
+  </Accordion>
+</AccordionGroup>

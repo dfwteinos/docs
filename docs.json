@@ -82,6 +82,7 @@
               {
                 "group": "Integrations & Settings",
                 "pages": [
+                  "lope-mcp",
                   "inviting-team-members",
                   "custom-fields-for-candidates"
                 ]
